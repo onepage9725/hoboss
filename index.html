@@ -1620,13 +1620,15 @@
         function observeElements() {
             if(observer) observer.disconnect();
             
+            // Fixed mobile issue: large elements (like product grid) never reach 0.1 threshold if they exceed viewport height.
+            // Using threshold 0 and rootMargin to trigger as soon as it enters screen.
             observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0, rootMargin: "0px 0px -50px 0px" });
 
             document.querySelectorAll('.page-view.active .fade-up').forEach(el => {
                 el.classList.remove('visible'); // reset
@@ -1673,18 +1675,6 @@
         // Initialize animations on load
         window.addEventListener('DOMContentLoaded', () => {
             observeElements();
-            
-            // Initialize products to show all
-            const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
-            if (allBtn) {
-                allBtn.click();
-            } else {
-                productItems.forEach(item => {
-                    item.style.display = 'block';
-                    item.style.opacity = '1';
-                    item.style.transform = 'scale(1)';
-                });
-            }
         });
     </script>
 
