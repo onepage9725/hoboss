@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HH Health Group - 凝聚平凡人 共创辉煌业</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#d20000',
+                        cream: '#fdf6f0',
+                        warmwhite: '#fafaf8',
+                        warmgray: '#f2f0ec',
+                        redtext: '#d20000',
+                        gold: '#c9a84c',
+                        darkred: '#1a0000',
+                        darkredalt: '#3a0000'
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', 'serif'],
+                        sans: ['"Noto Sans SC"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Styles & Utilities */
+        :root {
+            --red-gradient: linear-gradient(135deg, #d20000 0%, #ff4444 50%, #a00000 100%);
+            --red-gradient-dark: linear-gradient(135deg, #d20000, #8b0000);
+            --dark-gradient: linear-gradient(180deg, #1a0000 0%, #3a0000 100%);
+        }
+        
+        body { font-family: 'Noto Sans SC', sans-serif; color: #1a1a1a; overflow-x: hidden; }
+        h1, h2, h3, h4, .font-serif { font-family: 'Noto Serif SC', serif; }
+        
+        .bg-red-gradient { background: var(--red-gradient); }
+        .bg-red-gradient-dark { background: var(--red-gradient-dark); }
+        .bg-dark-gradient { background: var(--dark-gradient); }
+        .text-gradient {
+            background: var(--red-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .btn-parallelogram {
+            clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); }
+        .clip-diagonal-reverse { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%); }
+        
+        .card-premium {
+            background: #ffffff;
+            border-left: 4px solid var(--red-gradient);
+            box-shadow: 0 4px 24px rgba(210,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-premium:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(210,0,0,0.15);
+        }
+        
+        /* Marquee Animation */
+        .marquee-wrapper { overflow: hidden; white-space: nowrap; }
+        .marquee { display: inline-block; animation: marquee 25s linear infinite; }
+        .marquee span { margin-right: 3rem; }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Fade Up Animation using Intersection Observer */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Page Transitions */
+        .page-view {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .page-view.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Navigation active underline */
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: -4px; left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        .nav-link.active::after, .nav-link:hover::after { width: 100%; }
+        .nav-link.active { color: var(--primary); font-weight: 500; }
+        
+        /* Timeline specific */
+        .timeline-line::before {
+            content: ''; position: absolute;
+            left: 50%; top: 0; bottom: 0; width: 2px;
+            background: var(--red-gradient);
+            transform: translateX(-50%);
+        }
+        @media (max-width: 768px) {
+            .timeline-line::before { left: 24px; transform: none; }
+            .timeline-content { padding-left: 60px; width: 100% !important; text-align: left !important; }
+            .timeline-dot { left: 24px !important; transform: translateX(-50%) !important; }
+        }
+
+        /* Product Image Placeholder */
+        .prod-img-placeholder {
+            background: var(--red-gradient);
+            width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 4rem; opacity: 0.9;
+        }
+        
+        .filter-btn.active {
+            background-color: #d20000;
+            color: white;
+            border-color: #d20000;
+        }
+    </style>
+</head>
+<body class="bg-warmwhite antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur border-b border-red-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex items-center cursor-pointer" onclick="navigate('home')">
+                    <div class="w-10 h-10 bg-red-gradient btn-parallelogram flex items-center justify-center text-white font-serif font-bold text-xl mr-3 shadow-lg">
+                        HH
+                    </div>
+                    <span class="font-serif font-bold text-lg tracking-wider text-gray-900">HH HEALTH GROUP</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="navigate('home')" class="nav-link active text-gray-600 hover:text-primary transition">首页</button>
+                    <button onclick="navigate('products')" class="nav-link text-gray-600 hover:text-primary transition">产品系列</button>
+                    <button onclick="navigate('charity')" class="nav-link text-gray-600 hover:text-primary transition">公益活动</button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-red-50 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <button onclick="navigate('home')" class="block w-full text-left px-3 py-3 text-base font-medium text-gray-900 border-b border-gray-100">首页</button>
+                <button onclick="navigate('products')" class="block w-full text-left px-3 py-3 text-base font-medium text-gray-900 border-b border-gray-100">产品系列</button>
+                <button onclick="navigate('charity')" class="block w-full text-left px-3 py-3 text-base font-medium text-gray-900">公益活动</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENT WRAPPER -->
+    <div class="pt-20">
+    
+    <!-- ==================== PAGE 1: HOME ==================== -->
+    <main id="home" class="page-view active">
+        <!-- Section 1: Hero -->
+        <section class="relative min-h-[90vh] flex flex-col justify-center clip-diagonal bg-[#1a0000] pb-12 overflow-hidden">
+            <!-- Background Image -->
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-[url('image/hero.jpg')] bg-cover bg-center bg-no-repeat opacity-40 mix-blend-luminosity"></div>
+                <div class="absolute inset-0 bg-dark-gradient opacity-70"></div>
+            </div>
+            
+            <div class="relative z-20 w-full max-w-7xl mx-auto flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-16 text-center h-full">
+                <!-- Content -->
+                <div class="w-full max-w-4xl fade-up flex flex-col items-center">
+                    <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-white/20 text-white/90 text-sm font-medium mb-6 bg-white/5 backdrop-blur-sm shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-[#ff4444] animate-pulse mr-2"></span>
+                        HH HEALTH GROUP SDN BHD
+                    </div>
+                    <h1 class="font-serif font-black leading-tight mb-4" style="font-size: clamp(48px, 6vw, 84px);">
+                        <span class="block text-white">凝聚平凡人</span>
+                        <span class="block text-gradient">创造辉煌业</span>
+                    </h1>
+                    <p class="text-white/70 tracking-[0.25em] font-medium mb-8 text-sm sm:text-base">创新 · 拼搏 · 担当 · 诚信</p>
+                    <p class="text-gray-300 mb-10 leading-relaxed text-lg max-w-2xl mx-auto font-medium">
+                        由平凡人共同筑建的健康大健康平台。自2021年创立以来，我们秉承天然科学的健康理念，致力于为上百万家庭提供高品质的健康与护理解决方案，同时为有志之士打造无边界的创业平台。
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button onclick="navigate('products')" class="bg-red-gradient btn-parallelogram text-white px-8 py-4 font-medium hover:shadow-lg hover:shadow-red-500/30 transform hover:-translate-y-1">
+                            探索产品系列
+                        </button>
+                        <button onclick="navigate('charity')" class="border border-white/30 bg-transparent text-white px-8 py-4 font-medium rounded hover:bg-white hover:text-gray-900 transition-colors">
+                            了解公益活动
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Awards Ticker -->
+        <section class="bg-[#b32020] py-5 z-20 relative shadow-xl overflow-hidden flex items-center whitespace-nowrap">
+            <div class="marquee-wrapper text-white font-serif tracking-wider text-lg md:text-xl font-bold flex">
+                <div class="marquee inline-flex items-center space-x-12 pr-12">
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2025 吉尼斯世界纪录</span>
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2025 金牛奖</span>
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2025 Malaysia Book of Record</span>
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2025 亚洲百强诚信品牌大奖</span>
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2024 马来西亚健康与保健品牌奖</span>
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2023-2025 亚洲百强喜爱产品奖</span>
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2022-2023 亚太超级健康品牌</span>
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2023-2024 消费者选择奖</span>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="marquee inline-flex items-center space-x-12 pr-12" aria-hidden="true">
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2025 吉尼斯世界纪录</span>
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2025 金牛奖</span>
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2025 Malaysia Book of Record</span>
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2025 亚洲百强诚信品牌大奖</span>
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2024 马来西亚健康与保健品牌奖</span>
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2023-2025 亚洲百强喜爱产品奖</span>
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2022-2023 亚太超级健康品牌</span>
+                    <span class="flex items-center"><span class="text-[#ffb3b3] mr-3">★</span> 2023-2024 消费者选择奖</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Company Profile -->
+        <section class="py-20 bg-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row gap-12 items-stretch">
+                    <!-- Left Column -->
+                    <div class="w-full lg:w-1/2 flex flex-col justify-center border-l-[3px] border-primary pl-6 sm:pl-8 fade-up text-left z-10">
+                        
+                        <!-- Top Navigation Tabs -->
+                        <div class="flex gap-3 mb-10">
+                            <span class="px-5 py-1.5 rounded-full border border-gray-300 text-gray-500 font-medium text-sm">Company History</span>
+                            <span class="px-5 py-1.5 rounded-full bg-primary text-white font-medium text-sm shadow">Company Profile</span>
+                        </div>
+                        
+                        <!-- Badge -->
+                        <div class="mb-6">
+                            <span class="inline-block bg-primary text-white font-bold px-6 py-2 rounded-full shadow-md text-sm tracking-wider">
+                                Who We are ?
+                            </span>
+                        </div>
+                        
+                        <h2 class="font-serif font-black text-primary mb-8" style="font-size: clamp(48px, 6vw, 80px); line-height: 1.1;">
+                            HH Health Group
+                        </h2>
+                        
+                        <div class="text-[#333] text-[15px] leading-[1.9] max-w-[560px] space-y-4 mb-12 font-sans">
+                            <p>
+                                H&H Health Group Sdn Bhd 成立于2021年，是一家聚焦大健康领域的创新型电子商务企业。我们致力于通过自然疗法与循证科学，为用户提供安全有效的健康护理方案，同时为青年人才搭建数字化创业与成长平台。
+                            </p>
+                            <p>我们依托双轮驱动实现企业愿景：</p>
+                            <ul class="space-y-3">
+                                <li>🌿 <span class="font-bold">健康端：</span>坚持&quot;以天然取代化学&quot;理念，通过植物萃取与科学配方，帮助用户缓解疼痛、改善亚健康，减少化学干预依赖。</li>
+                                <li>🚀 <span class="font-bold">人才端：</span>打破传统创业壁垒，为不限背景、渴望突破的年轻人提供轻资产互联网创业机会。通过系统化营销培训与全维度成长计划，助力伙伴实现事业与生活的双向跃升。</li>
+                            </ul>
+                            <p>
+                                至今，H&H 已成功孵化20余个健康护理品牌，累计服务超百万用户。我们始终以&quot;幸福企业&quot;为组织底色，让团队在共创中提升生活品质，共享长期价值。
+                            </p>
+
+                            <div class="flex flex-col sm:flex-row gap-4 mt-6">
+                                <div class="flex-1 bg-red-50 p-4 border-l-[3px] border-primary rounded-r">
+                                    <h4 class="font-bold text-primary text-sm mb-1">愿景 Vision</h4>
+                                    <p class="font-serif font-bold text-gray-800 text-[15px] leading-tight mt-1">成为一家有价值有意义的百年企业</p>
+                                </div>
+                                <div class="flex-1 bg-red-50 p-4 border-l-[3px] border-primary rounded-r">
+                                    <h4 class="font-bold text-primary text-sm mb-1">使命 Mission</h4>
+                                    <p class="font-serif font-bold text-gray-800 text-[15px] leading-tight mt-1">让100万家庭健康<br>共创100位百万富翁</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bottom Bar -->
+                        <div class="w-full relative mt-auto flex items-stretch pt-4 max-w-md">
+                            <!-- Thin red line -->
+                            <div class="w-1.5 bg-[#cc0000] flex-shrink-0"></div>
+                            <!-- Main red box -->
+                            <div class="ml-1.5 sm:ml-2 flex-grow bg-[#cc0000] rounded-lg sm:rounded-xl p-4 sm:p-6 flex flex-col justify-between min-h-[100px] shadow-[0_10px_30px_rgba(204,0,0,0.3)]">
+                                <div class="font-serif text-2xl sm:text-3xl text-white font-bold tracking-widest text-left">公司初心</div>
+                                <div class="font-sans text-xs sm:text-sm tracking-[0.2em] text-white/90 text-right mt-6 sm:mt-8">创新、拼搏、担当、感恩、诚信</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column (Company Image) -->
+                    <div class="w-full lg:w-1/2 relative lg:min-h-[600px] rounded-2xl overflow-hidden shadow-2xl fade-up" style="transition-delay: 0.2s;">
+                        <img src="image/company.png" alt="Company Profile" class="w-full h-auto lg:absolute lg:inset-0 lg:w-full lg:h-full lg:object-cover block">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Development Timeline -->
+        <section class="py-[100px] bg-[#161616] relative overflow-hidden z-10 -mt-10">
+            <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <!-- Title Area -->
+                <div class="mb-[80px] fade-up flex flex-col items-start">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-[30px] h-[1px] bg-[#d20000]"></div>
+                        <span class="text-[#d20000] font-medium tracking-[0.2em] text-[13px]">发展历程</span>
+                    </div>
+                    <h2 class="font-serif font-black text-white tracking-widest text-[40px] md:text-[56px]">从起步到领航</h2>
+                </div>
+                
+                <div class="relative mx-auto max-w-[800px] md:px-0">
+                    <!-- Central red line (desktop) -->
+                    <div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-[#6a0000] transform -translate-x-1/2 hidden md:block"></div>
+                    <!-- Mobile red line -->
+                    <div class="absolute left-0 top-0 bottom-0 w-[1px] bg-[#d20000] md:hidden"></div>
+
+                    <!-- 2021 -->
+                    <div class="relative flex flex-col md:flex-row justify-between items-center md:items-stretch w-full mb-16 md:mb-12 fade-up pl-6 md:pl-0">
+                        <div class="absolute left-[-4px] top-[6px] w-[9px] h-[9px] bg-[#d20000] rounded-full shadow-[0_0_10px_rgba(210,0,0,0.5)] md:hidden z-10"></div>
+                        <div class="absolute right-0 top-1/2 -translate-y-1/2 font-serif font-black text-[#d20000] text-[48px] tracking-wider opacity-80 md:hidden z-0">2021</div>
+
+                        <div class="w-full md:w-[45%] text-left md:text-right md:pr-12 md:pb-8 relative z-10 mt-8 md:mt-8">
+                            <div class="text-[#d20000] text-[12px] tracking-[0.15em] mb-1 font-medium">创始阶段</div>
+                            <h4 class="font-serif text-white text-[22px] md:text-[24px] font-bold mb-2 md:whitespace-nowrap">Mr Youngs 健康餐外卖</h4>
+                            <p class="text-[#888] text-[13px] leading-[1.8] max-w-[260px] md:max-w-[420px] md:ml-auto">从2人团队起步，以健康餐外卖为切入点，播下健康事业的第一粒种子。</p>
+                        </div>
+                        
+                        <div class="hidden md:flex flex-col relative w-[10%] items-center justify-start mt-[2.5rem]">
+                            <div class="font-serif font-bold text-[#d20000] text-[32px] tracking-wider mb-2 z-10 bg-[#161616] py-1">2021</div>
+                            <div class="w-2.5 h-2.5 bg-[#d20000] rounded-full z-10 shadow-[0_0_10px_rgba(210,0,0,0.5)]"></div>
+                        </div>
+                        
+                        <div class="hidden md:block w-full md:w-[45%] md:pl-12"></div>
+                    </div>
+
+                    <!-- 2022 -->
+                    <div class="relative flex flex-col md:flex-row justify-between items-center md:items-stretch w-full mb-16 md:mb-12 fade-up pl-6 md:pl-0">
+                        <div class="absolute left-[-4px] top-[6px] w-[9px] h-[9px] bg-[#d20000] rounded-full shadow-[0_0_10px_rgba(210,0,0,0.5)] md:hidden z-10"></div>
+                        <div class="absolute right-0 top-1/2 -translate-y-1/2 font-serif font-black text-[#d20000] text-[48px] tracking-wider opacity-80 md:hidden z-0">2022</div>
+
+                        <div class="hidden md:block w-full md:w-[45%] md:pr-12"></div>
+                        
+                        <div class="hidden md:flex flex-col relative w-[10%] items-center justify-start mt-[2.5rem]">
+                            <div class="font-serif font-bold text-[#d20000] text-[32px] tracking-wider mb-2 z-10 bg-[#161616] py-1">2022</div>
+                            <div class="w-2.5 h-2.5 bg-[#d20000] rounded-full z-10 shadow-[0_0_10px_rgba(210,0,0,0.5)]"></div>
+                        </div>
+                        
+                        <div class="w-full md:w-[45%] text-left md:pl-12 md:pb-8 relative z-10 mt-8 md:mt-8">
+                            <div class="text-[#d20000] text-[12px] tracking-[0.15em] mb-1 font-medium">品牌创立</div>
+                            <h4 class="font-serif text-white text-[22px] md:text-[24px] font-bold mb-2 md:whitespace-nowrap">H&H Health Group Sdn Bhd</h4>
+                            <p class="text-[#888] text-[13px] leading-[1.8] max-w-[260px] md:max-w-[420px]">正式注册化公司，团队扩展至10人，开启健康品牌矩阵的系统性布局。</p>
+                        </div>
+                    </div>
+
+                    <!-- 2023 -->
+                    <div class="relative flex flex-col md:flex-row justify-between items-center md:items-stretch w-full mb-16 md:mb-12 fade-up pl-6 md:pl-0">
+                        <div class="absolute left-[-4px] top-[6px] w-[9px] h-[9px] bg-[#d20000] rounded-full shadow-[0_0_10px_rgba(210,0,0,0.5)] md:hidden z-10"></div>
+                        <div class="absolute right-0 top-1/2 -translate-y-1/2 font-serif font-black text-[#d20000] text-[48px] tracking-wider opacity-80 md:hidden z-0">2023</div>
+
+                        <div class="w-full md:w-[45%] text-left md:text-right md:pr-12 md:pb-8 relative z-10 mt-8 md:mt-8">
+                            <div class="text-[#d20000] text-[12px] tracking-[0.15em] mb-1 font-medium">线上扩张</div>
+                            <h4 class="font-serif text-white text-[22px] md:text-[24px] font-bold mb-2 md:whitespace-nowrap">Double H Online Sdn Bhd</h4>
+                            <p class="text-[#888] text-[13px] leading-[1.8] max-w-[260px] md:max-w-[420px] md:ml-auto">深耕电商赛道，团队扩展至20人，电商运营体系日趋成熟完善。</p>
+                        </div>
+                        
+                        <div class="hidden md:flex flex-col relative w-[10%] items-center justify-start mt-[2.5rem]">
+                            <div class="font-serif font-bold text-[#d20000] text-[32px] tracking-wider mb-2 z-10 bg-[#161616] py-1">2023</div>
+                            <div class="w-2.5 h-2.5 bg-[#d20000] rounded-full z-10 shadow-[0_0_10px_rgba(210,0,0,0.5)]"></div>
+                        </div>
+                        
+                        <div class="hidden md:block w-full md:w-[45%] md:pl-12"></div>
+                    </div>
+
+                    <!-- 2024 -->
+                    <div class="relative flex flex-col md:flex-row justify-between items-center md:items-stretch w-full mb-16 md:mb-12 fade-up pl-6 md:pl-0">
+                        <div class="absolute left-[-4px] top-[6px] w-[9px] h-[9px] bg-[#d20000] rounded-full shadow-[0_0_10px_rgba(210,0,0,0.5)] md:hidden z-10"></div>
+                        <div class="absolute right-0 top-1/2 -translate-y-1/2 font-serif font-black text-[#d20000] text-[48px] tracking-wider opacity-80 md:hidden z-0">2024</div>
+
+                        <div class="hidden md:block w-full md:w-[45%] md:pr-12"></div>
+                        
+                        <div class="hidden md:flex flex-col relative w-[10%] items-center justify-start mt-[2.5rem]">
+                            <div class="font-serif font-bold text-[#d20000] text-[32px] tracking-wider mb-2 z-10 bg-[#161616] py-1">2024</div>
+                            <div class="w-2.5 h-2.5 bg-[#d20000] rounded-full z-10 shadow-[0_0_10px_rgba(210,0,0,0.5)]"></div>
+                        </div>
+                        
+                        <div class="w-full md:w-[45%] text-left md:pl-12 md:pb-8 relative z-10 mt-8 md:mt-8">
+                            <div class="text-[#d20000] text-[12px] tracking-[0.15em] mb-1 font-medium">集团升级</div>
+                            <h4 class="font-serif text-white text-[22px] md:text-[24px] font-bold mb-2 md:whitespace-nowrap">Yusome Group Sdn Bhd</h4>
+                            <p class="text-[#888] text-[13px] leading-[1.8] max-w-[260px] md:max-w-[420px]">集团化升级，团队扩展至30人，品牌矩阵更加多元，市场影响力持续提升。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 2025 -->
+                    <div class="relative flex flex-col md:flex-row justify-between items-center md:items-stretch w-full mb-16 md:mb-12 fade-up pl-6 md:pl-0">
+                        <div class="absolute left-[-4px] top-[6px] w-[9px] h-[9px] bg-[#d20000] rounded-full shadow-[0_0_10px_rgba(210,0,0,0.5)] md:hidden z-10"></div>
+                        <div class="absolute right-0 top-[40%] -translate-y-1/2 font-serif font-black text-[#d20000] text-[48px] tracking-wider opacity-80 md:hidden z-0">2025</div>
+
+                        <div class="w-full md:w-[45%] text-left md:text-right md:pr-12 md:pb-8 relative z-10 mt-8 md:mt-8">
+                            <div class="text-[#d20000] text-[12px] tracking-[0.15em] mb-1 font-medium">荣耀之年</div>
+                            <h4 class="font-serif text-white text-[22px] md:text-[24px] font-bold mb-2 md:whitespace-nowrap">荣获吉尼斯世界纪录 · 金牛奖</h4>
+                            <p class="text-[#888] text-[13px] leading-[1.8] max-w-[280px] md:max-w-[420px] md:ml-auto">团队扩展至45人，斩获"Malaysia Book of Record"、"金牛奖"等国际权威荣誉，实现全马健康行业世界级荣誉的突破。</p>
+                        </div>
+                        
+                        <div class="hidden md:flex flex-col relative w-[10%] items-center justify-start mt-[2.5rem]">
+                            <div class="font-serif font-bold text-[#d20000] text-[32px] tracking-wider mb-2 z-10 bg-[#161616] py-1">2025</div>
+                            <div class="w-2.5 h-2.5 bg-[#d20000] rounded-full z-10 shadow-[0_0_10px_rgba(210,0,0,0.5)]"></div>
+                        </div>
+                        
+                        <div class="hidden md:block w-full md:w-[45%] md:pl-12"></div>
+                    </div>
+
+                    <!-- 2026 -->
+                    <div class="relative flex flex-col md:flex-row justify-between items-center md:items-stretch w-full mb-4 md:mb-0 fade-up pl-6 md:pl-0">
+                        <div class="absolute left-[-4px] top-[6px] w-[9px] h-[9px] bg-[#d20000] rounded-full shadow-[0_0_10px_rgba(210,0,0,0.5)] md:hidden z-10"></div>
+                        <div class="absolute right-0 top-[40%] -translate-y-1/2 font-serif font-black text-[#d20000] text-[48px] tracking-wider opacity-80 md:hidden z-0">2026</div>
+
+                        <div class="hidden md:block w-full md:w-[45%] md:pr-12"></div>
+                        
+                        <div class="hidden md:flex flex-col relative w-[10%] items-center justify-start mt-[2.5rem]">
+                            <div class="font-serif font-bold text-[#d20000] text-[32px] tracking-wider mb-2 z-10 bg-[#161616] py-1">2026</div>
+                            <div class="w-2.5 h-2.5 bg-[#d20000] rounded-full z-10 shadow-[0_0_10px_rgba(210,0,0,0.5)]"></div>
+                        </div>
+                        
+                        <div class="w-full md:w-[45%] text-left md:pl-12 md:pb-8 relative z-10 mt-8 md:mt-8">
+                            <div class="text-[#d20000] text-[12px] tracking-[0.15em] mb-1 font-medium">健康市场领导者</div>
+                            <h4 class="font-serif text-white text-[22px] md:text-[24px] font-bold mb-2 md:whitespace-nowrap">签约各大明星 · 用户规模达1亿</h4>
+                            <p class="text-[#888] text-[13px] leading-[1.8] max-w-[260px] md:max-w-[420px]">品牌影响力强势扩大，签约各大明星代言，用户规模突破1亿，正式成为健康市场领导者。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Founder -->
+        <section class="py-24 bg-cream clip-diagonal-reverse relative z-0 -mt-10 pt-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    <!-- Left Portrait image -->
+                    <div class="w-full lg:w-5/12 fade-up">
+                        <div class="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl group">
+                            <img src="image/CEO.jpg" alt="CEO & Founder" class="w-full h-full object-cover">
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <div class="inline-block bg-gold text-darkred font-bold px-4 py-1.5 rounded text-sm mb-3 shadow-lg z-10 relative">CEO & 创始人</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Content -->
+                    <div class="w-full lg:w-7/12 fade-up" style="transition-delay: 0.2s;">
+                        <span class="text-primary font-bold tracking-widest text-sm uppercase mb-2 block">领导核心</span>
+                        <h2 class="text-6xl md:text-7xl font-serif font-black text-gray-900 mb-2">HH Boss</h2>
+                        <div class="text-2xl text-primary font-serif italic mb-8">首席执行官 · 创始人</div>
+                        
+                        <p class="text-gray-600 text-lg leading-relaxed mb-10 text-justify">
+                            从三流青年到百万企业创始人，于2022年对市场趋势有着敏锐的洞察力和前瞻性的思维，能够精准把握行业发展的脉搏，制定出符合公司发展战略的决策。
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-x-6 gap-y-8 border-t border-gray-200 pt-8">
+                            <div>
+                                <div class="text-primary font-serif font-bold text-xl mb-1">2025</div>
+                                <div class="text-gray-800 font-medium text-sm">世界纪录持有者</div>
+                            </div>
+                            <div>
+                                <div class="text-primary font-serif font-bold text-xl mb-1">2025</div>
+                                <div class="text-gray-800 font-medium text-sm">金牛奖持有者</div>
+                            </div>
+                            <div>
+                                <div class="text-primary font-serif font-bold text-xl mb-1">2025</div>
+                                <div class="text-gray-800 font-medium text-sm">Malaysia Book of Record</div>
+                            </div>
+                            <div>
+                                <div class="text-primary font-serif font-bold text-xl mb-1">2024</div>
+                                <div class="text-gray-800 font-medium text-sm">马来西亚健康与保健品牌奖</div>
+                            </div>
+                            <div>
+                                <div class="text-primary font-serif font-bold text-xl mb-1">2022</div>
+                                <div class="text-gray-800 font-medium text-sm">100大最具影响力年轻企业家</div>
+                            </div>
+                            <div>
+                                <div class="text-primary font-serif font-bold text-xl mb-1">2022</div>
+                                <div class="text-gray-800 font-medium text-sm">亚太超级健康品牌</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Enterprise Honor -->
+        <section class="relative pt-[100px] pb-[120px] overflow-hidden" style="background: linear-gradient(180deg, #ffffff 0%, #fff5f5 100%);">
+            <!-- ENTERPRISE HONOR Watermark -->
+            <div class="absolute bottom-0 w-full text-center pointer-events-none z-0 whitespace-nowrap overflow-hidden leading-none" style="margin-bottom: -15px;">
+                <span class="font-serif font-black tracking-[8px] uppercase select-none" style="font-size: clamp(60px, 8vw, 120px); color: rgba(210,0,0,0.15);">
+                    ENTERPRISE HONOR
+                </span>
+            </div>
+
+            <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center lg:items-start gap-[60px]">
+                    <!-- Left Column (30%) -->
+                    <div class="w-full lg:w-[30%] flex flex-col items-center lg:items-start text-center lg:text-left fade-up-slide-right">
+                        
+                        <!-- Decorative Medal Image -->
+                        <div class="relative w-[320px] lg:w-[450px] -mt-[100px] lg:-mt-[160px] xl:-ml-[60px] mb-6 lg:mb-10 flex-shrink-0 drop-shadow-2xl z-20">
+                            <img src="image/f9311239-16d7-41ed-8661-13e11aabf3a3.png" alt="Enterprise Honor Medal" class="w-full h-auto object-contain">
+                        </div>
+
+                        <!-- Titles & Body -->
+                        <h2 class="font-serif font-black mb-4 text-[#1a1a1a]" style="font-size: clamp(40px, 5vw, 64px); line-height: 1.1;">企业荣誉</h2>
+                        <div class="text-[16px] text-primary font-bold mb-4 tracking-wider">匠心铸就荣耀，实力定义标杆</div>
+                        
+                        <p class="text-[14px] text-[#555] leading-[1.9] max-w-[280px]">
+                            秉持"健康强国"信念，HH Boss 带领集团不断打破边界，脱颖而出。我们不仅赢得了业界的广泛认可，更以开拓者之姿荣获吉尼斯世界纪录，实现全马健康行业世界级荣誉"零的突破"。
+                        </p>
+                    </div>
+
+                    <!-- Right Column (70%) -->
+                    <div class="w-full lg:w-[70%] fade-up-slide-left">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 gap-y-4">
+                            <div class="text-center group flex flex-col justify-center items-center py-4">
+                                <div class="font-serif font-black text-[32px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2025</div>
+                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">世界纪录<br>持有者</div>
+                            </div>
+                            <div class="text-center group flex flex-col justify-center items-center py-4">
+                                <div class="font-serif font-black text-[32px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2025</div>
+                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">金牛奖<br>持有者</div>
+                            </div>
+                            <div class="text-center group flex flex-col justify-center items-center py-4">
+                                <div class="font-serif font-black text-[32px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2025</div>
+                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">Malaysia Book<br>Of Record</div>
+                            </div>
+                            <div class="text-center group flex flex-col justify-center items-center py-4">
+                                <div class="font-serif font-black text-[32px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2024</div>
+                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">马来西亚 健康与保<br>健品牌奖</div>
+                            </div>
+
+                            <!-- ROW 1: Certificates -->
+                            <!-- Card 1 -->
+                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
+                                <img src="image/1.png" alt="Certificate 1" class="w-full h-full object-cover">
+                            </div>
+                            <!-- Card 2 -->
+                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
+                                <img src="image/2.png" alt="Certificate 2" class="w-full h-full object-cover">
+                            </div>
+                            <!-- Card 3 -->
+                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
+                                <img src="image/3.png" alt="Certificate 3" class="w-full h-full object-cover">
+                            </div>
+                            <!-- Card 4 -->
+                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
+                                <img src="image/4.png" alt="Certificate 4" class="w-full h-full object-cover">
+                            </div>
+
+                            <!-- ROW 2: Labels -->
+                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                <div class="font-serif font-black text-[32px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2025</div>
+                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">亚洲百强诚<br>信品牌大奖</div>
+                            </div>
+                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2023-2025</div>
+                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">亚洲百强喜<br>爱产品奖</div>
+                            </div>
+                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2022-2023</div>
+                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">亚太超级<br>健康品牌</div>
+                            </div>
+                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2023-2024</div>
+                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">消费者<br>选择奖</div>
+                            </div>
+
+                            <!-- ROW 2: Certificates -->
+                            <!-- Card 5 -->
+                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden">
+                                <img src="image/5.png" alt="Certificate 5" class="w-full h-full object-cover">
+                            </div>
+                            <!-- Card 6 -->
+                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden">
+                                <img src="image/6.png" alt="Certificate 6" class="w-full h-full object-cover">
+                            </div>
+                            <!-- Card 7 -->
+                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden">
+                                <img src="image/7.png" alt="Certificate 7" class="w-full h-full object-cover">
+                            </div>
+                            <!-- Card 8 -->
+                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden">
+                                <img src="image/8.png" alt="Certificate 8" class="w-full h-full object-cover">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Social Media -->
+        <section class="py-[100px] bg-[#161616] relative z-10">
+            <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Title Area -->
+                <div class="mb-[60px] fade-up flex flex-col items-start">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-[30px] h-[1px] bg-[#d20000]"></div>
+                        <span class="text-[#d20000] font-medium tracking-[0.2em] text-[13px]">社交媒体影响力</span>
+                    </div>
+                    <h2 class="font-serif font-black text-white tracking-widest text-[40px] md:text-[48px]">数字化品牌传播</h2>
+                </div>
+                
+                <!-- Grid Area -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 bg-[#0a0a0a] border border-[#1a1a1a]">
+                    <!-- Xiaohongshu -->
+                    <a href="https://www.xiaohongshu.com/user/profile/5c1a7a1c0000000007011d61" target="_blank" rel="noopener noreferrer" class="group relative border-b lg:border-b-0 border-r border-[#1a1a1a] p-6 md:p-10 hover:bg-[#d20000] transition-colors duration-300 block fade-up flex flex-col justify-start">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-10 gap-2 md:gap-0">
+                            <div class="text-[#d20000] group-hover:text-white font-medium text-[10px] md:text-[11px] tracking-[0.1em] md:tracking-[0.15em] uppercase transition-colors">XIAOHONGSHU · 小红书</div>
+                            <img src="image/xhslogo.png" alt="Xiaohongshu" class="h-5 md:h-6 w-auto grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 self-start md:self-auto">
+                        </div>
+                        <div class="text-white font-serif text-[40px] md:text-[70px] font-medium leading-none mb-3 transition-colors">338K</div>
+                        <div class="text-[#888] group-hover:text-white/90 text-[11px] md:text-[13px] mb-6 md:mb-10 transition-colors">粉丝关注</div>
+                        <p class="text-[#666] group-hover:text-white/80 text-[11px] md:text-[13px] leading-[1.8] transition-colors flex-grow">
+                            分享有价值、有意义的健康短视频，传递正能量，展现HH品牌初心。
+                        </p>
+                    </a>
+                    
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/HHBOSS79" target="_blank" rel="noopener noreferrer" class="group relative border-b lg:border-b-0 lg:border-r border-[#1a1a1a] p-6 md:p-10 hover:bg-[#d20000] transition-colors duration-300 block fade-up flex flex-col justify-start" style="transition-delay: 0.1s;">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-10 gap-2 md:gap-0">
+                            <div class="text-[#d20000] group-hover:text-white font-medium text-[10px] md:text-[11px] tracking-[0.1em] md:tracking-[0.15em] uppercase transition-colors">FACEBOOK · 脸书</div>
+                            <img src="image/fblogo.svg.png" alt="Facebook" class="h-5 md:h-6 w-auto grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 self-start md:self-auto">
+                        </div>
+                        <div class="text-white font-serif text-[40px] md:text-[70px] font-medium leading-none mb-3 transition-colors">400K</div>
+                        <div class="text-[#888] group-hover:text-white/90 text-[11px] md:text-[13px] mb-6 md:mb-10 transition-colors">粉丝关注</div>
+                        <p class="text-[#666] group-hover:text-white/80 text-[11px] md:text-[13px] leading-[1.8] transition-colors flex-grow">
+                            从FB直播起家，多个视频播放量百万，打响HH名声，开启逆袭之路。
+                        </p>
+                    </a>
+                    
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/hhboss_weihong/" target="_blank" rel="noopener noreferrer" class="group relative border-r border-[#1a1a1a] p-6 md:p-10 hover:bg-[#d20000] transition-colors duration-300 block fade-up flex flex-col justify-start" style="transition-delay: 0.2s;">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-10 gap-2 md:gap-0">
+                            <div class="text-[#d20000] group-hover:text-white font-medium text-[10px] md:text-[11px] tracking-[0.1em] md:tracking-[0.15em] uppercase transition-colors">INSTAGRAM · 照片墙</div>
+                            <img src="image/instalogo.svg.png" alt="Instagram" class="h-5 md:h-6 w-auto grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 self-start md:self-auto">
+                        </div>
+                        <div class="text-white font-serif text-[40px] md:text-[70px] font-medium leading-none mb-3 transition-colors">628K</div>
+                        <div class="text-[#888] group-hover:text-white/90 text-[11px] md:text-[13px] mb-6 md:mb-10 transition-colors">粉丝关注</div>
+                        <p class="text-[#666] group-hover:text-white/80 text-[11px] md:text-[13px] leading-[1.8] transition-colors flex-grow">
+                            《圆梦3000》《帮助百人》系列，多个视频播放量破200万，影响力席卷全网。
+                        </p>
+                    </a>
+                    
+                    <!-- TikTok -->
+                    <a href="https://www.tiktok.com/@weihonghh_oe" target="_blank" rel="noopener noreferrer" class="group relative p-6 md:p-10 hover:bg-[#d20000] transition-colors duration-300 block fade-up flex flex-col justify-start" style="transition-delay: 0.3s;">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-10 gap-2 md:gap-0">
+                            <div class="text-[#d20000] group-hover:text-white font-medium text-[10px] md:text-[11px] tracking-[0.1em] md:tracking-[0.15em] uppercase transition-colors">TIKTOK · 抖音</div>
+                            <img src="image/tiktoklogo.png.webp" alt="TikTok" class="h-5 md:h-6 w-auto grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 self-start md:self-auto">
+                        </div>
+                        <div class="text-white font-serif text-[40px] md:text-[70px] font-medium leading-none mb-3 transition-colors">404K</div>
+                        <div class="text-[#888] group-hover:text-white/90 text-[11px] md:text-[13px] mb-6 md:mb-10 transition-colors">粉丝关注</div>
+                        <p class="text-[#666] group-hover:text-white/80 text-[11px] md:text-[13px] leading-[1.8] transition-colors flex-grow">
+                            强大个人IP影响力，2M赞，把HH好产品带火，实现流量与口碑双赢。
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== PAGE 2: PRODUCTS ==================== -->
+    <main id="products" class="page-view hidden">
+        <!-- Hero -->
+        <section class="relative min-h-[40vh] md:min-h-[50vh] flex flex-col justify-end bg-gradient-to-r from-[#0a0000] via-[#1a0000] to-[#050000] overflow-hidden pt-[100px]">
+            <!-- Subtle grid overlay -->
+            <div class="absolute inset-0 z-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)]" style="background-size: 50px 50px; background-position: center center;"></div>
+            
+            <!-- Red dark glow gradient in background -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-[#d20000] opacity-[0.12] rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+            <div class="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-end justify-between">
+                <!-- Title Area -->
+                <div class="w-full md:w-3/5 pb-12 md:pb-[100px]">
+                    <div class="mb-4 fade-up flex flex-col items-start">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-[30px] h-[1px] bg-[#d20000]"></div>
+                            <span class="text-[#d20000] font-medium tracking-[0.2em] text-[13px]">产品系列</span>
+                        </div>
+                    </div>
+
+                    <div class="fade-up mb-10 text-left">
+                        <div class="font-serif font-black text-white text-[48px] sm:text-[64px] md:text-[80px] lg:text-[100px] leading-[1.1] tracking-wide relative">
+                            以天然<span class="text-[#d20000]">取代化学</span>
+                            <br>
+                            科学守护健康
+                        </div>
+                    </div>
+
+                    <div class="fade-up text-left" style="transition-delay: 0.2s;">
+                        <div class="text-[#888888] text-[12px] sm:text-[14px] md:text-[16px] tracking-[0.1em] md:tracking-[0.15em] font-medium flex flex-wrap items-center gap-3">
+                            <span>20余个健康护理品牌</span>
+                            <span class="w-[3px] h-[3px] rounded-full bg-[#555555]"></span>
+                            <span>服务超百万用户</span>
+                            <span class="w-[3px] h-[3px] rounded-full bg-[#555555]"></span>
+                            <span>全线通过安全认证</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right image Area (Sticks to bottom) -->
+                <div class="w-full md:w-2/5 flex justify-center md:justify-end items-end relative z-20 shrink-0 fade-up" style="transition-delay: 0.4s;">
+                    <img src="image/3a9576cf-2437-4261-af94-3561a58c697d.png" alt="Products Hero Image" class="w-full max-w-[500px] object-contain object-bottom block" style="margin-bottom: 0;">
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="py-28 relative overflow-hidden" style="background: linear-gradient(145deg, #2a0000 0%, #6b0000 45%, #8b0000 55%, #1a0000 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 60%); pointer-events: none;"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 shrink-0 relative z-10">
+                
+                <!-- Joiment -->
+                <div class="bg-white rounded-r-3xl rounded-l-md shadow-xl flex flex-col md:flex-row overflow-hidden border-l-8 border-[#d20000] fade-up hover:-translate-y-2 transition duration-300">
+                    
+                    <!-- Left Side: Product Visual Panel -->
+                    <div class="md:w-5/12 relative min-h-[420px] flex items-center justify-center overflow-hidden bg-[#fafafa]">
+                        <img src="image/p1.png" alt="神髓膏 Joiment" class="w-full h-full object-cover object-center absolute inset-0 z-10 transition-transform duration-700 hover:scale-105">
+                        
+                        <!-- Bottom-left badge overlay -->
+                        <div class="absolute bottom-4 left-4 z-30">
+                            <div class="bg-[#d20000] text-white px-4 py-1.5 rounded shadow-md font-bold" style="font-size: 11px; letter-spacing: 2px;">FLAGSHIP · 旗舰产品</div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Product Info -->
+                    <div class="md:w-7/12 p-8 md:p-12 flex flex-col justify-center text-left">
+                        <div style="font-size: 12px; letter-spacing: 4px; color: #d20000; font-weight: 500; margin-bottom: 12px;">JOIMENT · JOINT CARE</div>
+                        
+                        <h2 class="font-serif text-[#1a1a1a]" style="font-weight: 900; font-size: clamp(40px, 5vw, 64px); line-height: 1; margin-bottom: 24px;">神髓膏</h2>
+                        
+                        <p style="font-size: 15px; color: #555; line-height: 1.9; margin-bottom: 32px; max-w: 600px;">
+                            作为HH品牌的旗舰级标杆产品，荣膺"马来西亚纪录大全"权威认证，斩获年度最佳健康保健品大奖。针对50肩与颈椎劳损提供系统化缓解方案。
+                        </p>
+                        
+                        <ul class="flex flex-col gap-3">
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>针对50肩与颈椎劳损提供系统化缓解方案
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>精准应对关节红肿痛症
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>加速运动损伤及韧带扭伤康复进程
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>Malaysia Book of Records 权威认证大奖得主
+                            </li>
+                        </ul>
+
+                        <!-- Divider -->
+                        <div class="w-[60px] h-[1px] bg-[#d20000] my-6"></div>
+
+                        <!-- Target group tag -->
+                        <div>
+                            <span class="inline-block bg-[#fff0f0] border border-[#ffcccc] text-[#d20000] rounded-full px-4 py-1.5 text-[12px] font-medium">适合：关节疼痛 · 运动损伤 · 五十肩人群</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nugluko reversed -->
+                <div class="bg-white rounded-l-3xl rounded-r-md shadow-xl flex flex-col md:flex-row-reverse overflow-hidden border-r-8 border-[#d20000] fade-up hover:-translate-y-2 transition duration-300">
+                    
+                    <!-- Right Side: Product Visual Panel -->
+                    <div class="md:w-5/12 relative min-h-[420px] flex items-center justify-center overflow-hidden bg-[#fafafa]">
+                        <img src="image/p2.png" alt="苦瓜粉 Nugluko" class="w-full h-full object-cover object-center absolute inset-0 z-10 transition-transform duration-700 hover:scale-105">
+                        
+                        <!-- Bottom-left badge overlay -->
+                        <div class="absolute bottom-4 left-4 z-30">
+                            <div class="bg-[#d20000] text-white px-4 py-1.5 rounded shadow-md font-bold" style="font-size: 11px; letter-spacing: 2px;">BEST SELLER · 销量冠军</div>
+                        </div>
+                    </div>
+
+                    <!-- Left Side: Product Info -->
+                    <div class="md:w-7/12 p-8 md:p-12 flex flex-col justify-center text-left">
+                        <div style="font-size: 12px; letter-spacing: 4px; color: #d20000; font-weight: 500; margin-bottom: 12px;">NUGLUKO · BLOOD SUGAR</div>
+                        
+                        <h2 class="font-serif text-[#1a1a1a]" style="font-weight: 900; font-size: clamp(40px, 5vw, 64px); line-height: 1; margin-bottom: 24px;">苦瓜粉</h2>
+                        
+                        <p style="font-size: 15px; color: #555; line-height: 1.9; margin-bottom: 32px; max-w: 600px;">
+                            高血糖的"杀手锏"，天然提取，科学调理。专门解决糖尿病和稳定血糖，多家庭信赖，全系回购率最高的一款健康标杆单品。
+                        </p>
+                        
+                        <ul class="flex flex-col gap-3">
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>天然提取，科学调理，不伤内脏
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>专解糖尿病及稳定血糖指标
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>多家庭信赖，全系回购率最高单品
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>美国高端配方研制
+                            </li>
+                        </ul>
+
+                        <!-- Divider -->
+                        <div class="w-[60px] h-[1px] bg-[#d20000] my-6"></div>
+
+                        <!-- Target group tag -->
+                        <div>
+                            <span class="inline-block bg-[#fff0f0] border border-[#ffcccc] text-[#d20000] rounded-full px-4 py-1.5 text-[12px] font-medium">适合：高血糖 · 糖尿病患者 · 需稳糖人群</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nushape -->
+                <div class="bg-white rounded-r-3xl rounded-l-md shadow-xl flex flex-col md:flex-row overflow-hidden border-l-8 border-[#d20000] fade-up hover:-translate-y-2 transition duration-300">
+                    
+                    <!-- Left Side: Product Visual Panel -->
+                    <div class="md:w-5/12 relative min-h-[420px] flex items-center justify-center overflow-hidden bg-[#fafafa]">
+                        <img src="image/p3.png" alt="神塑燕麦 Nushape" class="w-full h-full object-cover object-center absolute inset-0 z-10 transition-transform duration-700 hover:scale-105">
+                        
+                        <!-- Bottom-left badge overlay -->
+                        <div class="absolute bottom-4 left-4 z-30">
+                            <div class="bg-[#d20000] text-white px-4 py-1.5 rounded shadow-md font-bold" style="font-size: 11px; letter-spacing: 2px;">TOP SELLER · 塑形冠军</div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Product Info -->
+                    <div class="md:w-7/12 p-8 md:p-12 flex flex-col justify-center text-left">
+                        <div style="font-size: 12px; letter-spacing: 4px; color: #d20000; font-weight: 500; margin-bottom: 12px;">NUSHAPE · BODY SHAPING</div>
+                        
+                        <h2 class="font-serif text-[#1a1a1a]" style="font-weight: 900; font-size: clamp(40px, 5vw, 64px); line-height: 1; margin-bottom: 24px;">神塑燕麦</h2>
+                        
+                        <p style="font-size: 15px; color: #555; line-height: 1.9; margin-bottom: 32px; max-w: 600px;">
+                            首发即登顶细分类目销量冠军，凭借显著的减脂功效，赢得精准塑形群体的高度认可与品牌忠诚。不但减脂，还能有效缓解肠胃不适。
+                        </p>
+                        
+                        <ul class="flex flex-col gap-3">
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>首发即登顶细分类目销量冠军
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>不强制节食，显著减脂，精准身体塑形
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>同步缓解胃痛、胃酸及账气问题
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>意大利顶级配方引入
+                            </li>
+                        </ul>
+
+                        <!-- Divider -->
+                        <div class="w-[60px] h-[1px] bg-[#d20000] my-6"></div>
+
+                        <!-- Target group tag -->
+                        <div>
+                            <span class="inline-block bg-[#fff0f0] border border-[#ffcccc] text-[#d20000] rounded-full px-4 py-1.5 text-[12px] font-medium">适合：急需减脂 · 追求身材管理 · 肠胃不适人群</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 4: Newhair (image RIGHT, text LEFT via flex-row-reverse) -->
+                <div class="bg-white rounded-l-3xl rounded-r-md shadow-xl flex flex-col md:flex-row-reverse overflow-hidden border-r-8 border-[#d20000] fade-up hover:-translate-y-2 transition duration-300">
+                    
+                    <!-- Right Side: Product Visual Panel -->
+                    <div class="md:w-5/12 relative min-h-[420px] flex items-center justify-center overflow-hidden bg-[#fafafa]">
+                        <img src="image/p4.png" alt="神发喷雾 Newhair" class="w-full h-full object-cover object-center absolute inset-0 z-10 transition-transform duration-700 hover:scale-105">
+                        
+                        <!-- Bottom-left badge overlay -->
+                        <div class="absolute bottom-4 left-4 z-30">
+                            <div class="bg-[#d20000] text-white px-4 py-1.5 rounded shadow-md font-bold" style="font-size: 11px; letter-spacing: 2px;">STAR PRODUCT · 明星单品</div>
+                        </div>
+                    </div>
+
+                    <!-- Left Side: Product Info -->
+                    <div class="md:w-7/12 p-8 md:p-12 flex flex-col justify-center text-left">
+                        <div style="font-size: 12px; letter-spacing: 4px; color: #d20000; font-weight: 500; margin-bottom: 12px;">NEWHAIR · HAIR RESTORATION</div>
+                        
+                        <h2 class="font-serif text-[#1a1a1a]" style="font-weight: 900; font-size: clamp(40px, 5vw, 64px); line-height: 1; margin-bottom: 24px;">神发喷雾</h2>
+                        
+                        <p style="font-size: 15px; color: #555; line-height: 1.9; margin-bottom: 32px; max-w: 600px;">
+                            作为明星单品生发喷雾搭配洗护套装，深受广大养发发烧友的信赖。采用天然植物精华配方，从根源解决脱发问题，重建健康发囊环境，让每一根发丝重获生机。
+                        </p>
+                        
+                        <ul class="flex flex-col gap-3">
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>针对秃顶、掉发、M字秃精准发力
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>明星单品生发喷雾搭配专业洗护套装
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>天然植物精华配方，从根源改善脱发
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>深受广大养发发烧友长期信赖
+                            </li>
+                        </ul>
+
+                        <!-- Divider -->
+                        <div class="w-[60px] h-[1px] bg-[#d20000] my-6"></div>
+
+                        <!-- Target group tag -->
+                        <div>
+                            <span class="inline-block bg-[#fff0f0] border border-[#ffcccc] text-[#d20000] rounded-full px-4 py-1.5 text-[12px] font-medium">适合：脱发 · 发量稀少 · M字发际线人群</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newteeth -->
+                <div class="bg-white rounded-r-3xl rounded-l-md shadow-xl flex flex-col md:flex-row overflow-hidden border-l-8 border-[#d20000] fade-up hover:-translate-y-2 transition duration-300">
+                    
+                    <!-- Left Side: Product Visual Panel -->
+                    <div class="md:w-5/12 relative min-h-[420px] flex items-center justify-center overflow-hidden bg-[#fafafa]">
+                        <img src="image/p5.png" alt="神龈粉 Newteeth" class="w-full h-full object-cover object-center absolute inset-0 z-10 transition-transform duration-700 hover:scale-105">
+                        
+                        <!-- Bottom-left badge overlay -->
+                        <div class="absolute bottom-4 left-4 z-30">
+                            <div class="bg-[#d20000] text-white px-4 py-1.5 rounded shadow-md font-bold" style="font-size: 11px; letter-spacing: 2px;">HOT ITEM · 热销单品</div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Product Info -->
+                    <div class="md:w-7/12 p-8 md:p-12 flex flex-col justify-center text-left">
+                        <div style="font-size: 12px; letter-spacing: 4px; color: #d20000; font-weight: 500; margin-bottom: 12px;">NEWTEETH · ORAL CARE</div>
+                        
+                        <h2 class="font-serif text-[#1a1a1a]" style="font-weight: 900; font-size: clamp(40px, 5vw, 64px); line-height: 1; margin-bottom: 24px;">神龈粉</h2>
+                        
+                        <p style="font-size: 15px; color: #555; line-height: 1.9; margin-bottom: 32px; max-w: 600px;">
+                            HH口腔救星！老少都爱用的牙粉，专治牙齿松动、牙龈萎缩、牙结石和牙龈发炎，彻底稳固牙根，让牙龈重获健康。
+                        </p>
+                        
+                        <ul class="flex flex-col gap-3">
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>专治牙齿松动与牙龈萎缩，稳固牙间结构
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>深层洁净口腔，有效祛除顽固牙结石
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>舒缓牙龈发炎红肿，让牙龈重获健康
+                            </li>
+                            <li class="flex items-center text-[14px] text-[#444]">
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>家庭必备，适合男女老少的护齿救星
+                            </li>
+                        </ul>
+
+                        <!-- Divider -->
+                        <div class="w-[60px] h-[1px] bg-[#d20000] my-6"></div>
+
+                        <!-- Target group tag -->
+                        <div>
+                            <span class="inline-block bg-[#fff0f0] border border-[#ffcccc] text-[#d20000] rounded-full px-4 py-1.5 text-[12px] font-medium">适合：牙龈发炎 · 牙结石 · 牙齿松动人群</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Product Filter Grid -->
+        <section class="py-20 bg-[#fafaf8] border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <h3 class="text-3xl md:text-4xl font-serif font-black text-center mb-10 text-gray-900">完整产品矩阵</h3>
+                
+                <!-- Filters -->
+                <div class="flex flex-wrap justify-center gap-3 mb-16">
+                    <button class="filter-btn active px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="all">全部产品</button>
+                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="joint">关节骨骼</button>
+                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="slim">塑形减脂</button>
+                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="sugar">血糖管理</button>
+                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="hair">发肤护理</button>
+                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="organ">脏器调理</button>
+                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="other">其他产品</button>
+                </div>
+
+                <!-- Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 fade-up">
+                    
+                    <!-- 1. Joiment -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="joint">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/joiment.png" alt="JOIMENT 神髓膏" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">JOINT CARE</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">JOIMENT</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">神髓膏</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>关节疼痛缓解</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>针对50肩</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>运动损伤修复</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 关节痛、50肩、运动损伤</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+                    
+                    <!-- 2. Joigrain -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="joint">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/16.png" alt="JOIGRAIN 补骨营养代餐" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">JOINT CARE</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">JOIGRAIN</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">补骨营养代餐</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>修复软骨</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>强化骨密度</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>高效补钙</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 骨质疏松、缺钙人群</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 3. Nushape -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="slim">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/nushape.png" alt="NUSHAPE 神塑燕麦" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">BODY SHAPING</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NUSHAPE</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">神塑燕麦</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>减脂塑形</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>暖胃护胃</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>改善胃胀气问题</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 减脂塑形、肠胃不适、胀气</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 4. Nugluko -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="sugar">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/nugluko.png" alt="NUGLUKO 苦瓜粉" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">BLOOD SUGAR</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NUGLUKO</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">苦瓜粉</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>天然降血糖</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>稳定糖尿病指标</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>不伤内脏配方</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 高血糖、糖尿病患者</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 5. Newhair -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="hair">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/newhair.png" alt="NEWHAIR 神发喷雾" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">HAIR CARE</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NEWHAIR</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">神发喷雾</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>针对秃顶掉发</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>改善M字秃</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>坚固发根毛囊</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 秃顶、掉发、M字秃</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 6. Newteeth -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="hair">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/newteeth.png" alt="NEWTEETH 神龈粉" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">ORAL CARE</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NEWTEETH</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">神龈粉</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>治疗牙齿松动</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>改善牙龈萎缩发炎</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>溶解牙结石</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 牙齿松动、牙龈萎缩、牙结石</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 7. Newface -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="hair">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/newface.png" alt="NEWFACE 神颜系列" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">SKIN CARE</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NEWFACE</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">神颜系列</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>淡斑祛痘</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>抗初老防护</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>深层补水保湿</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 色斑、长痘、干燥肌肤</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 8. Nullagen -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="hair">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/nullagen.png" alt="NULLAGEN 水光胶原蛋白" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">INNER BEAUTY</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NULLAGEN</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">水光胶原蛋白</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>淡斑美白</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>显著减少细纹</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>紧致提拉肌肤</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 皮肤松弛、暗沉、细纹人群</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 9. Nuheart -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="organ">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/nuheart.png" alt="NUHEART 心生命" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">HEART CARE</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NUHEART</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">心生命</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>减少中风风险</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>深层清理血管</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>长效维持血压</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 血管阻塞、高血压、中风高危</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 10. Nueye -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="organ">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/nueye.png" alt="NUEYE 清肝明目粉" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">EYE CARE</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NUEYE</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">清肝明目粉</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>促进眼部血液循环</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>修复眼部神经</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>降低眼压与疲劳</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 视力模糊、高眼压、用眼过度</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 11. Oxyroots -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="organ">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/oxyroots.png" alt="OXYROOTS 氧肺王" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">LUNG CARE</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">OXYROOTS</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">氧肺王</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>缓解长年咳嗽</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>深层排毒化痰</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>修复受损呼吸道</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 久咳不愈、痰多、呼吸道脆弱</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 12. Uridox -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="organ">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/uridox.png" alt="URIDOX 清肾降酸饮" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">KIDNEY CARE</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">URIDOX</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">清肾降酸饮</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>高效降尿酸</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>降低肾脏坏指数</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>快速缓解痛风</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 高尿酸、痛风、肾脏负担重</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 13. Nuliva -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="organ">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/nuliva.png" alt="NULIVA 清肝王" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">LIVER CARE</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NULIVA</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">清肝王</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>深度护肝清肝</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>排出长期肝毒</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>降低体内胆固醇</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 熬夜伤肝、高胆固醇、应酬多</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 14. Nulife -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="organ">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/nulife.png" alt="NULIFE 双仙人掌" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">IMMUNITY</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NULIFE</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">双仙人掌</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>强效增强免疫力</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>双倍抗瘤成分</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>舒缓化疗副作用</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 免疫力低下、化疗病患、抗瘤</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 15. Hokun -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="other">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/hokun.png" alt="HOKUN 清肝助眠粉" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">SLEEP & HEALTH</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">HOKUN</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">清肝助眠粉</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>清解肝火健脑</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>稳定三高指标</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>显著提升睡眠质量</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 睡眠差、易怒肝火旺、三高患者</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 16. Celldox -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="other">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/celldox.png" alt="CELLDOX 排毒清肠饮" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">DETOX</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">CELLDOX</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">排毒清肠饮</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>专业级排毒化脂</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>彻底改善便秘</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>深层分解宿便毒素</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 长年便秘、宿便排毒不畅者</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                    <!-- 17. Ezybath -->
+                    <div class="product-item bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden relative cursor-pointer group" data-cat="other">
+                        <div class="bg-red-gradient h-[180px] flex items-center justify-center relative">
+                            <img src="image/ezybath.png" alt="EZYBATH 抑菌沐浴露" class="h-32 object-contain drop-shadow-md">
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded text-white text-[10px] font-bold tracking-widest uppercase">BODY WASH</div>
+                        </div>
+                        <div class="p-8 pb-10">
+                            <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">EZYBATH</div>
+                            <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">抑菌沐浴露</h4>
+                            <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>高效止痒消炎</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>修复脆弱皮肤屏障</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>抑制皮炎与湿疹</li>
+                            </ul>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 皮肤瘙痒、湿疹、屏障受损</div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="py-24 bg-red-gradient-dark text-white text-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-up">
+                <span class="text-white/70 font-bold tracking-widest text-sm uppercase block mb-2">权威背书</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-black mb-12">每一款产品 都经过严格认证</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
+                    <div class="rounded-lg overflow-hidden shadow-2xl hover:shadow-primary/50 transition duration-500 cursor-pointer group" onclick="openModal('image/rz1.png')">
+                        <img src="image/rz1.png" alt="Certification 1" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-2xl hover:shadow-primary/50 transition duration-500 cursor-pointer group" onclick="openModal('image/rz2.png')">
+                        <img src="image/rz2.png" alt="Certification 2" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== PAGE 3: CHARITY ==================== -->
+    <main id="charity" class="page-view hidden">
+        <!-- Hero -->
+        <section class="relative min-h-screen flex flex-col justify-center clip-diagonal bg-[#1a0000] overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-[url('image/601818561_122269420856194568_8126187910358160027_n.jpg')] bg-cover bg-center bg-no-repeat opacity-40 mix-blend-luminosity"></div>
+                <div class="absolute inset-0 bg-dark-gradient opacity-70"></div>
+            </div>
+            
+            <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-20 pb-32 text-center h-full">
+                <div class="fade-up mb-10 w-full">
+                    <h1 class="font-serif font-black text-6xl md:text-7xl lg:text-8xl leading-tight mb-6">
+                        <span class="block text-white">凝聚爱心</span>
+                        <span class="block text-gradient">回馈社会</span>
+                    </h1>
+                </div>
+                <div class="text-white fade-up w-full max-w-3xl flex justify-center" style="transition-delay: 0.2s;">
+                    <div class="py-2 text-center">
+                        <p class="text-2xl md:text-3xl font-serif text-white/90 leading-relaxed">健康事业不止于商业，</p>
+                        <p class="text-2xl md:text-3xl font-serif text-white/90 leading-relaxed mt-2">更是对社会的责任与担当。</p>
+                        <p class="text-gray-300 mt-6 text-lg">我们将所创造的企业价值，通过实实在在的行动反馈给最需要帮助的社群。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HH Charity Run -->
+        <section class="py-24 bg-warmwhite relative z-10 -mt-10 pt-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 fade-up">
+                    <div class="lg:w-1/2">
+                        <span class="text-primary font-bold tracking-widest text-sm uppercase">品牌金牌活动</span>
+                        <h2 class="text-4xl md:text-5xl font-serif font-black mt-2 text-gray-900">HH 健康慈善教育跑</h2>
+                        <p class="mt-6 text-gray-600 text-lg leading-relaxed">
+                            连续两年举办的大型城市健康慈善跑，旨在唤醒大众健康意识的同时，为华文教育事业筹集善款。从数千人的参与到打破国家纪录，爱心的雪球越滚越大。
+                        </p>
+                    </div>
+                    
+                    <div class="lg:w-1/2 w-full">
+                        <div class="bg-red-gradient p-10 rounded-2xl shadow-xl text-center text-white transform hover:scale-[1.02] transition">
+                            <div class="text-sm tracking-widest font-bold mb-2 opacity-80">HH RUN 1.0 慈善成果</div>
+                            <div class="text-6xl md:text-7xl font-serif font-black mb-4">RM108,000</div>
+                            <div class="inline-block bg-white text-primary px-6 py-2 rounded-full font-bold text-lg">全数捐款予槟城华校教师会</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HH Charity Carousel -->
+        <section class="py-16 bg-cream overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center fade-up">
+                <span class="text-primary font-bold tracking-widest text-sm uppercase">慈善剪影</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-black mt-2 text-gray-900">公益活动精彩瞬间</h2>
+            </div>
+            
+            <div class="marquee-wrapper flex overflow-hidden">
+                <div class="marquee shrink-0 inline-flex space-x-6 pr-6 items-center" style="animation-duration: 45s;">
+                    <img src="image/c1.jpg" alt="Charity Moment 1" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c1.jpg')">
+                    <img src="image/c2.jpg" alt="Charity Moment 2" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c2.jpg')">
+                    <img src="image/c3.jpg" alt="Charity Moment 3" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c3.jpg')">
+                    <img src="image/c4.jpg" alt="Charity Moment 4" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c4.jpg')">
+                    <img src="image/c5.jpg" alt="Charity Moment 5" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c5.jpg')">
+                    <img src="image/c6.jpg" alt="Charity Moment 6" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c6.jpg')">
+                    <img src="image/c7.jpg" alt="Charity Moment 7" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c7.jpg')">
+                    <img src="image/c8.jpg" alt="Charity Moment 8" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c8.jpg')">
+                    <img src="image/c9.jpg" alt="Charity Moment 9" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c9.jpg')">
+                    <img src="image/c10.jpg" alt="Charity Moment 10" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c10.jpg')">
+                    <img src="image/c11.jpg" alt="Charity Moment 11" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c11.jpg')">
+                    <img src="image/c12.jpg" alt="Charity Moment 12" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c12.jpg')">
+                </div>
+                <div class="marquee shrink-0 inline-flex space-x-6 pr-6 items-center" aria-hidden="true" style="animation-duration: 45s;">
+                    <img src="image/c1.jpg" alt="Charity Moment 1" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c1.jpg')">
+                    <img src="image/c2.jpg" alt="Charity Moment 2" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c2.jpg')">
+                    <img src="image/c3.jpg" alt="Charity Moment 3" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c3.jpg')">
+                    <img src="image/c4.jpg" alt="Charity Moment 4" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c4.jpg')">
+                    <img src="image/c5.jpg" alt="Charity Moment 5" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c5.jpg')">
+                    <img src="image/c6.jpg" alt="Charity Moment 6" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c6.jpg')">
+                    <img src="image/c7.jpg" alt="Charity Moment 7" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c7.jpg')">
+                    <img src="image/c8.jpg" alt="Charity Moment 8" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c8.jpg')">
+                    <img src="image/c9.jpg" alt="Charity Moment 9" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c9.jpg')">
+                    <img src="image/c10.jpg" alt="Charity Moment 10" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c10.jpg')">
+                    <img src="image/c11.jpg" alt="Charity Moment 11" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c11.jpg')">
+                    <img src="image/c12.jpg" alt="Charity Moment 12" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c12.jpg')">
+                </div>
+            </div>
+        </section>
+
+        <!-- Media Report Section -->
+        <section class="py-24 bg-[#0a0a0a]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
+                <div class="mb-12 md:mb-16 fade-up">
+                    <div class="flex items-center text-primary text-sm tracking-widest mb-4">
+                        <span class="w-10 h-[1.5px] bg-primary block mr-3"></span> 媒体报道
+                    </div>
+                    <h2 class="text-4xl md:text-5xl text-white font-serif font-black tracking-widest">获主流媒体广泛报道</h2>
+                </div>
+                
+                <!-- Grid -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 bg-[#0a0a0a] border border-[#222] fade-up">
+                    <!-- Item 1 -->
+                    <div class="bg-[#1a1a1a] py-16 px-6 text-center flex flex-col justify-center border-b border-r border-[#0a0a0a] transition hover:bg-[#222]">
+                        <div class="text-4xl sm:text-5xl md:text-6xl text-primary font-serif font-black mb-6">2025</div>
+                        <div class="text-sm sm:text-lg md:text-xl text-white font-bold mb-3 tracking-widest">光明日报</div>
+                        <div class="text-[10px] sm:text-xs md:text-sm text-gray-400 tracking-wider">企业勇上奖 · 头条报道</div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="bg-[#1a1a1a] py-16 px-6 text-center flex flex-col justify-center border-b border-r lg:border-r border-[#0a0a0a] transition hover:bg-[#222]">
+                        <div class="text-4xl sm:text-5xl md:text-6xl text-primary font-serif font-black mb-6">2025</div>
+                        <div class="text-sm sm:text-lg md:text-xl text-white font-bold mb-3 tracking-widest">星洲日报</div>
+                        <div class="text-[10px] sm:text-xs md:text-sm text-gray-400 tracking-wider">头条特别报道</div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="bg-[#1a1a1a] py-16 px-6 text-center flex flex-col justify-center border-b border-r sm:border-r border-[#0a0a0a] transition hover:bg-[#222]">
+                        <div class="text-4xl sm:text-5xl md:text-6xl text-primary font-serif font-black mb-6">2025</div>
+                        <div class="text-sm sm:text-lg md:text-xl text-white font-bold mb-3 tracking-widest">星洲日报</div>
+                        <div class="text-[10px] sm:text-xs md:text-sm text-gray-400 tracking-wider">慈善公益专题报道</div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="bg-[#1a1a1a] py-16 px-6 text-center flex flex-col justify-center border-b lg:border-r-0 border-[#0a0a0a] transition hover:bg-[#222]">
+                        <div class="text-4xl sm:text-5xl md:text-6xl text-primary font-serif font-black mb-6">2025</div>
+                        <div class="text-sm sm:text-lg md:text-xl text-white font-bold mb-3 tracking-widest">光明日报</div>
+                        <div class="text-[10px] sm:text-xs md:text-sm text-gray-400 tracking-wider">企业荣誉专题报道</div>
+                    </div>
+                    
+                    <!-- Item 5 -->
+                    <div class="bg-primary py-16 px-6 text-center flex flex-col justify-center border-r sm:border-b-0 border-[#0a0a0a] transition hover:brightness-110">
+                        <div class="text-5xl sm:text-6xl md:text-7xl text-white font-serif font-black mb-4">2</div>
+                        <div class="text-sm md:text-base text-white tracking-widest font-bold mt-2">届慈善跑</div>
+                    </div>
+                    <!-- Item 6 -->
+                    <div class="bg-[#1a1a1a] py-16 px-6 text-center flex flex-col justify-center border-b sm:border-b-0 border-r lg:border-r border-[#0a0a0a] transition hover:bg-[#222]">
+                        <div class="text-5xl sm:text-6xl md:text-7xl text-primary font-serif font-black mb-4">1</div>
+                        <div class="text-sm text-gray-400 tracking-wider mt-2">项吉尼斯世界纪录</div>
+                    </div>
+                    <!-- Item 7 -->
+                    <div class="bg-[#1a1a1a] py-16 px-6 text-center flex flex-col justify-center border-r sm:border-b-0 border-[#0a0a0a] transition hover:bg-[#222]">
+                        <div class="text-5xl sm:text-6xl md:text-7xl text-primary font-serif font-black mb-4">4</div>
+                        <div class="text-sm text-gray-400 tracking-wider mt-2">大主流媒体报道</div>
+                    </div>
+                    <!-- Item 8 -->
+                    <div class="bg-[#1a1a1a] py-16 px-6 text-center flex flex-col justify-center lg:border-r-0 border-[#0a0a0a] transition hover:bg-[#222]">
+                        <div class="text-4xl sm:text-5xl md:text-6xl text-primary font-serif font-black mb-4">RM10<span class="text-3xl md:text-4xl">万+</span></div>
+                        <div class="text-sm text-gray-400 tracking-wider mt-2">慈善捐款总额</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <!-- CTA -->
+        <section class="py-24 bg-[#cc0000] text-white text-center relative overflow-hidden" style="background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px); background-size: 30px 30px;">
+            <div class="max-w-4xl mx-auto px-4 fade-up relative z-10 py-10 text-shadow-sm">
+                <h2 class="text-5xl md:text-7xl font-serif font-black mb-6 tracking-widest leading-tight">
+                    携手HH<br>共创辉煌业
+                </h2>
+                <p class="text-base md:text-lg text-white/90 tracking-[0.2em] mb-16">诚邀渠道伙伴 · 供应链合作 · 项目联合开发</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-3xl mx-auto items-center justify-center">
+                    <div>
+                        <div class="text-sm text-white/80 tracking-widest mb-2 font-light">联系人</div>
+                        <div class="text-lg md:text-xl font-bold tracking-widest">HH 小助理（商务合作部）</div>
+                    </div>
+                    <div>
+                        <div class="text-sm text-white/80 tracking-widest mb-2 font-light">合作咨询邮箱</div>
+                        <div class="text-lg md:text-xl font-bold tracking-wider font-sans">hhhealthgroup@gmail.com</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#1a1a1a] border-t-[3px] border-primary text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex flex-col items-center md:items-start mb-6 md:mb-0">
+                <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 bg-red-gradient btn-parallelogram flex items-center justify-center text-white font-serif font-bold text-sm mr-3">HH</div>
+                    <span class="font-serif font-bold text-white tracking-widest">H&H HEALTH GROUP</span>
+                </div>
+                <div class="text-sm tracking-widest">凝聚平凡人 · 共创辉煌业</div>
+            </div>
+            
+            <div class="text-sm text-gray-500 text-center md:text-right">
+                <div class="mb-2">总部设于马来西亚</div>
+                <div>&copy; 2026 H&H Health Group Sdn Bhd · All Rights Reserved</div>
+            </div>
+        </div>
+    </footer>
+    
+    </div> <!-- END WRAPPER -->
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/90 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300" onclick="closeModal()">
+        <button class="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-gray-300 text-4xl md:text-5xl focus:outline-none" onclick="closeModal()">&times;</button>
+        <img id="modalImg" src="" alt="Zoomed Image" class="max-w-[95vw] max-h-[90vh] object-contain transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Modal logic
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const img = document.getElementById('modalImg');
+            img.src = src;
+            modal.classList.remove('hidden');
+            // small delay to allow display block to process before changing opacity
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                img.classList.remove('scale-95');
+                img.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            const img = document.getElementById('modalImg');
+            modal.classList.add('opacity-0');
+            img.classList.remove('scale-100');
+            img.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // SPA Navigation
+        function navigate(pageId) {
+            // Update buttons
+            document.querySelectorAll('.nav-link').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Try to find the exact button (in desktop menu mostly) that clicked it
+            // A simple approach is just clear all, then add 'active' based on match
+            document.querySelectorAll('.nav-link').forEach(btn => {
+                if(btn.textContent.trim() === getPageName(pageId)) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update content visibility
+            document.querySelectorAll('.page-view').forEach(page => {
+                page.classList.remove('active');
+                page.classList.add('hidden');
+            });
+            const target = document.getElementById(pageId);
+            target.classList.remove('hidden');
+            target.classList.add('active');
+            
+            // Close mobile menu
+            document.getElementById('mobile-menu').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Re-trigger animations
+            setTimeout(() => { observeElements(); }, 100);
+        }
+
+        function getPageName(id) {
+            if(id === 'home') return '首页';
+            if(id === 'products') return '产品系列';
+            if(id === 'charity') return '公益活动';
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Intersection Observer for scroll animations
+        let observer;
+        function observeElements() {
+            if(observer) observer.disconnect();
+            
+            observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.page-view.active .fade-up').forEach(el => {
+                el.classList.remove('visible'); // reset
+                observer.observe(el);
+            });
+        }
+
+        // Products Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productItems = document.querySelectorAll('.product-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                filterBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.classList.add('bg-white', 'text-[#d20000]');
+                });
+                btn.classList.add('active');
+                btn.classList.remove('bg-white', 'text-[#d20000]');
+
+                // Filter logic
+                const filterValue = btn.getAttribute('data-filter');
+                productItems.forEach(item => {
+                    item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.95)';
+                    
+                    setTimeout(() => {
+                        if (filterValue === 'all' || item.getAttribute('data-cat') === filterValue) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    }, 300);
+                });
+            });
+        });
+
+        // Initialize animations on load
+        window.addEventListener('DOMContentLoaded', () => {
+            observeElements();
+        });
+    </script>
+
+</body>
+</html>
