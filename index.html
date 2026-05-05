@@ -165,6 +165,19 @@
                     <button onclick="navigate('home')" class="nav-link active text-gray-600 hover:text-primary transition">首页</button>
                     <button onclick="navigate('products')" class="nav-link text-gray-600 hover:text-primary transition">产品系列</button>
                     <button onclick="navigate('charity')" class="nav-link text-gray-600 hover:text-primary transition">公益活动</button>
+                    <!-- Social Media Dropdown -->
+                    <div class="relative group">
+                        <button class="nav-link text-gray-600 hover:text-primary transition flex items-center h-full">
+                            社交媒体
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-1/2 -translate-x-1/2 mt-0 w-32 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-red-50 overflow-hidden">
+                            <a href="https://www.xiaohongshu.com/user/profile/5c1a7a1c0000000007011d61" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 text-sm text-center text-gray-700 hover:bg-red-50 hover:text-primary">小红书</a>
+                            <a href="https://www.facebook.com/HHBOSS79" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 text-sm text-center text-gray-700 hover:bg-red-50 hover:text-primary">Facebook</a>
+                            <a href="https://www.instagram.com/hhboss_weihong/" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 text-sm text-center text-gray-700 hover:bg-red-50 hover:text-primary">Instagram</a>
+                            <a href="https://www.tiktok.com/@weihonghh_oe" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 text-sm text-center text-gray-700 hover:bg-red-50 hover:text-primary">TikTok</a>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Mobile Menu Button -->
@@ -182,6 +195,15 @@
                 <button onclick="navigate('home')" class="block w-full text-left px-3 py-3 text-base font-medium text-gray-900 border-b border-gray-100">首页</button>
                 <button onclick="navigate('products')" class="block w-full text-left px-3 py-3 text-base font-medium text-gray-900 border-b border-gray-100">产品系列</button>
                 <button onclick="navigate('charity')" class="block w-full text-left px-3 py-3 text-base font-medium text-gray-900">公益活动</button>
+                <div class="border-b border-gray-100 pb-2">
+                    <div class="px-3 py-3 text-base font-medium text-gray-900">社交媒体</div>
+                    <div class="pl-6 space-y-1">
+                        <a href="https://www.xiaohongshu.com/user/profile/5c1a7a1c0000000007011d61" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary">小红书</a>
+                        <a href="https://www.facebook.com/HHBOSS79" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary">Facebook</a>
+                        <a href="https://www.instagram.com/hhboss_weihong/" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary">Instagram</a>
+                        <a href="https://www.tiktok.com/@weihonghh_oe" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary">TikTok</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -304,7 +326,7 @@
                             <div class="w-1.5 bg-[#cc0000] flex-shrink-0"></div>
                             <!-- Main red box -->
                             <div class="ml-1.5 sm:ml-2 flex-grow bg-[#cc0000] rounded-lg sm:rounded-xl p-4 sm:p-6 flex flex-col justify-between min-h-[100px] shadow-[0_10px_30px_rgba(204,0,0,0.3)]">
-                                <div class="font-serif text-2xl sm:text-3xl text-white font-bold tracking-widest text-left">公司初心</div>
+                                <div class="font-serif text-2xl sm:text-3xl text-white font-bold tracking-widest text-left">价值观</div>
                                 <div class="font-sans text-xs sm:text-sm tracking-[0.2em] text-white/90 text-right mt-6 sm:mt-8">创新、拼搏、担当、感恩、诚信</div>
                             </div>
                         </div>
@@ -1404,6 +1426,10 @@
             
             <div class="marquee-wrapper flex overflow-hidden">
                 <div class="marquee shrink-0 inline-flex space-x-6 pr-6 items-center" style="animation-duration: 45s;">
+                    <img src="image/gy1.png" alt="Charity Moment Gy1" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/gy1.png')">
+                    <img src="image/gy2.png" alt="Charity Moment Gy2" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/gy2.png')">
+                    <img src="image/gy3.png" alt="Charity Moment Gy3" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/gy3.png')">
+                    <img src="image/gy4.png" alt="Charity Moment Gy4" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/gy4.png')">
                     <img src="image/c1.jpg" alt="Charity Moment 1" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c1.jpg')">
                     <img src="image/c2.jpg" alt="Charity Moment 2" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c2.jpg')">
                     <img src="image/c3.jpg" alt="Charity Moment 3" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c3.jpg')">
@@ -1418,6 +1444,10 @@
                     <img src="image/c12.jpg" alt="Charity Moment 12" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c12.jpg')">
                 </div>
                 <div class="marquee shrink-0 inline-flex space-x-6 pr-6 items-center" aria-hidden="true" style="animation-duration: 45s;">
+                    <img src="image/gy1.png" alt="Charity Moment Gy1" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/gy1.png')">
+                    <img src="image/gy2.png" alt="Charity Moment Gy2" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/gy2.png')">
+                    <img src="image/gy3.png" alt="Charity Moment Gy3" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/gy3.png')">
+                    <img src="image/gy4.png" alt="Charity Moment Gy4" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/gy4.png')">
                     <img src="image/c1.jpg" alt="Charity Moment 1" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c1.jpg')">
                     <img src="image/c2.jpg" alt="Charity Moment 2" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c2.jpg')">
                     <img src="image/c3.jpg" alt="Charity Moment 3" class="h-56 md:h-72 w-auto object-cover rounded-xl shadow-lg cursor-pointer hover:shadow-primary/30 transition-all duration-300" onclick="openModal('image/c3.jpg')">
