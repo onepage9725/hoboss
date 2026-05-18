@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="成立于2021年，是一家聚焦大健康领域的创新型电子商务企业。我们致力于通过自然疗法与循证科学，为用户提供安全有效的健康护理方案，同时为青年人才搭建数字化创业与成长平台">
+    <meta name="description" content="H&H Health Group成立于2021年，致力于为消费者提供有效、天然的健康与美容解决方案，并通过电商平台与全马100多家中西药房合作广泛推广高品质产品。">
     <title>H&amp;H Health Group - 凝聚平凡人, 创造辉煌业</title>
     <link rel="icon" type="image/png" href="image/hhlogofavicon.png">
     
@@ -127,10 +127,116 @@
             background: var(--red-gradient);
             transform: translateX(-50%);
         }
+        .timeline-panel {
+            position: relative;
+            overflow: hidden;
+            padding: 1.35rem 1.5rem;
+            border: 1px solid rgba(255, 110, 110, 0.22);
+            border-radius: 1.25rem;
+            background:
+                radial-gradient(circle at top right, rgba(255, 92, 92, 0.2), transparent 38%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+        .timeline-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 4px;
+            background: var(--red-gradient);
+            opacity: 0.95;
+        }
+        .timeline-panel::after {
+            content: '';
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            right: -52px;
+            top: -68px;
+            border-radius: 999px;
+            background: radial-gradient(circle, rgba(210, 0, 0, 0.22), transparent 68%);
+            pointer-events: none;
+        }
+        .timeline-panel:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 132, 132, 0.42);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.34), 0 0 32px rgba(210, 0, 0, 0.12);
+        }
+        .timeline-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            margin-bottom: 0.75rem;
+            color: #ff8d8d;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+        .timeline-kicker::before {
+            content: '';
+            width: 22px;
+            height: 1px;
+            background: rgba(255, 141, 141, 0.7);
+        }
+        .timeline-year-badge {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 96px;
+            padding: 0.7rem 1rem;
+            border: 1px solid rgba(255, 110, 110, 0.25);
+            border-radius: 999px;
+            background: linear-gradient(180deg, rgba(48, 0, 0, 0.96), rgba(22, 22, 22, 0.96));
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+        }
+        .timeline-year-badge::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255, 128, 128, 0.65), rgba(210, 0, 0, 0.16));
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .timeline-node {
+            position: relative;
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 30% 30%, #ffd7d7, #ff4d4d 45%, #b30000 100%);
+            border: 3px solid rgba(19, 19, 19, 0.95);
+            box-shadow: 0 0 0 7px rgba(210, 0, 0, 0.14), 0 0 22px rgba(255, 70, 70, 0.34);
+        }
         @media (max-width: 768px) {
             .timeline-line::before { left: 24px; transform: none; }
             .timeline-content { padding-left: 60px; width: 100% !important; text-align: left !important; }
             .timeline-dot { left: 24px !important; transform: translateX(-50%) !important; }
+            .timeline-panel {
+                padding: 1.15rem 1.15rem 1.15rem 1.3rem;
+                border-radius: 1rem;
+            }
+            .timeline-kicker {
+                font-size: 10px;
+                letter-spacing: 0.18em;
+            }
+            .timeline-year-badge {
+                min-width: 82px;
+                padding: 0.55rem 0.85rem;
+            }
+            .timeline-node {
+                width: 14px;
+                height: 14px;
+                border-width: 2px;
+                box-shadow: 0 0 0 5px rgba(210, 0, 0, 0.14), 0 0 18px rgba(255, 70, 70, 0.28);
+            }
         }
 
         /* Product Image Placeholder */
@@ -145,6 +251,123 @@
             background-color: #d20000;
             color: white;
             border-color: #d20000;
+        }
+
+        .brand-carousel-shell {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(210, 0, 0, 0.1);
+            border-radius: 2rem;
+            background:
+                radial-gradient(circle at top left, rgba(210, 0, 0, 0.08), transparent 30%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(252, 246, 240, 0.98));
+            box-shadow: 0 22px 50px rgba(110, 25, 25, 0.12);
+        }
+        .brand-carousel-shell::before {
+            content: '';
+            position: absolute;
+            inset: auto -8% -32% auto;
+            width: 320px;
+            height: 320px;
+            border-radius: 999px;
+            background: radial-gradient(circle, rgba(210, 0, 0, 0.12), transparent 68%);
+            pointer-events: none;
+        }
+        .brand-carousel-viewport {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-snap-type: x mandatory;
+        }
+        .brand-carousel-viewport::-webkit-scrollbar { display: none; }
+        .brand-carousel-track {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+        .brand-carousel-slide {
+            position: relative;
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+        }
+        .brand-carousel-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            background: white;
+            border: 1px solid rgba(210, 0, 0, 0.08);
+            box-shadow: 0 16px 36px rgba(56, 24, 24, 0.08);
+        }
+        .brand-carousel-media {
+            position: relative;
+            min-height: 280px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #fff8f8 0%, #fff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .brand-carousel-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+        }
+        .brand-carousel-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0 1.5rem 1.5rem;
+        }
+        .brand-carousel-dots {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            flex-wrap: wrap;
+        }
+        .brand-carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(210, 0, 0, 0.18);
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+        .brand-carousel-dot.active {
+            width: 32px;
+            background: #d20000;
+        }
+        .brand-carousel-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            border: 1px solid rgba(210, 0, 0, 0.16);
+            background: white;
+            color: #d20000;
+            font-size: 20px;
+            box-shadow: 0 10px 24px rgba(56, 24, 24, 0.08);
+            transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+        }
+        .brand-carousel-button:hover {
+            transform: translateY(-1px);
+            background: #d20000;
+            color: white;
+        }
+        @media (min-width: 768px) {
+            .brand-carousel-slide {
+                flex-basis: calc(50% - 0.75rem);
+            }
+        }
+        @media (min-width: 1024px) {
+            .brand-carousel-slide {
+                flex-basis: calc(33.333% - 1rem);
+            }
         }
     </style>
 </head>
@@ -297,15 +520,13 @@
                         
                         <div class="text-[#333] text-[15px] leading-[1.9] max-w-[560px] space-y-4 mb-12 font-sans">
                             <p>
-                                H&H Health Group Sdn Bhd 成立于2021年，是一家聚焦大健康领域的创新型电子商务企业。我们致力于通过自然疗法与循证科学，为用户提供安全有效的健康护理方案，同时为青年人才搭建数字化创业与成长平台。
+                                H&amp;H Health Group成立于2021年，由创始人罗伟宏先生创立，致力于为消费者提供有效、天然的健康与美容解决方案。公司始终秉持着客户至上的原则，关注客户的真实需求，利用电商平台，以及与全马100多家中西药房合作，广泛推广高品质的产品。
                             </p>
-                            <p>我们依托双轮驱动实现企业愿景：</p>
-                            <ul class="space-y-3">
-                                <li>🌿 <span class="font-bold">健康端：</span>坚持&quot;以天然取代化学&quot;理念，通过植物萃取与科学配方，帮助用户缓解疼痛、改善亚健康，减少化学干预依赖。</li>
-                                <li>🚀 <span class="font-bold">人才端：</span>打破传统创业壁垒，为不限背景、渴望突破的年轻人提供轻资产互联网创业机会。通过系统化营销培训与全维度成长计划，助力伙伴实现事业与生活的双向跃升。</li>
-                            </ul>
                             <p>
-                                至今，H&H 已成功孵化20余个健康护理品牌，累计服务超百万用户。我们始终以&quot;幸福企业&quot;为组织底色，让团队在共创中提升生活品质，共享长期价值。
+                                H&amp;H始终以“成为一家有意义、有价值的百年企业”为愿景，通过健康产品与服务，改善大众的生活质量。通过持续的市场分析和客户反馈，公司不断优化产品线，确保每一款产品都能真正解决客户的痛点。自成立以来，H&amp;H已成功孵化超过25个品牌，涵盖了从关节健康、皮肤护理到体重管理等各类产品，并成功帮助超过200,000人改善了健康状况，成为保健与美容产业中备受关注的新星。
+                            </p>
+                            <p>
+                                H&amp;H一直秉持「帮助100万个家庭身心健康，成就100位百万富翁」的使命。公司不仅重视产品的质量，更关心团队的成长与发展。公司为许多没有资金和资历的年轻人提供了创业的机会，通过培训提升他们的专业技能，帮助他们通过电商平台实现个人价值。这不仅为他们提供了职业发展的途径，也为社会培养了一批充满潜力的未来企业家。
                             </p>
 
                             <div class="flex flex-col sm:flex-row gap-4 mt-6">
@@ -352,124 +573,151 @@
                     <h2 class="font-serif font-black text-white tracking-widest text-[40px] md:text-[56px]">从起步到领航</h2>
                 </div>
                 
-                <div class="relative mx-auto max-w-[800px] md:px-0">
+                <div class="relative mx-auto max-w-[900px] md:px-0">
+                    <div class="absolute inset-x-[8%] top-8 h-24 bg-[radial-gradient(circle,_rgba(210,0,0,0.22),_transparent_68%)] blur-3xl pointer-events-none"></div>
                     <!-- Central red line (desktop) -->
-                    <div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-[#6a0000] transform -translate-x-1/2 hidden md:block"></div>
+                    <div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#3d0000] via-[#d20000] to-[#3d0000] transform -translate-x-1/2 hidden md:block"></div>
                     <!-- Mobile red line -->
-                    <div class="absolute left-0 top-0 bottom-0 w-[1px] bg-[#d20000] md:hidden"></div>
+                    <div class="absolute left-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#4a0000] via-[#d20000] to-[#4a0000] md:hidden"></div>
+
+                    <!-- 2020 -->
+                    <div class="relative flex flex-col md:flex-row justify-between items-center md:items-stretch w-full mb-12 md:mb-12 fade-up pl-6 md:pl-0">
+                        <div class="absolute left-[-7px] top-[20px] md:hidden z-10 timeline-node"></div>
+
+                        <div class="w-full md:w-[45%] text-left md:text-right md:pr-12 md:pb-8 relative z-10 mt-2 md:mt-8">
+                            <div class="font-serif font-black text-[#d20000] text-[40px] tracking-wider opacity-80 md:hidden z-0 leading-none mb-3">2020</div>
+                            <div class="timeline-panel md:ml-auto max-w-[420px]">
+                                <div class="timeline-kicker md:justify-end">起点 · 从0到1</div>
+                                <p class="text-white text-[13px] leading-[1.9] max-w-[280px] md:max-w-[360px] md:ml-auto">2人团队｜RM5,000起步<br>从健康餐外卖出发<br>踏入大健康领域的第一步</p>
+                            </div>
+                        </div>
+
+                        <div class="hidden md:flex flex-col relative w-[10%] items-center justify-start mt-[2.5rem]">
+                            <div class="timeline-year-badge font-serif font-bold text-[#ff8d8d] text-[28px] tracking-[0.18em] mb-4 z-10">2020</div>
+                            <div class="timeline-node z-10"></div>
+                        </div>
+
+                        <div class="hidden md:block w-full md:w-[45%] md:pl-12"></div>
+                    </div>
 
                     <!-- 2021 -->
                     <div class="relative flex flex-col md:flex-row justify-between items-center md:items-stretch w-full mb-12 md:mb-12 fade-up pl-6 md:pl-0">
-                        <div class="absolute left-[-4px] top-[6px] w-[9px] h-[9px] bg-[#d20000] rounded-full shadow-[0_0_10px_rgba(210,0,0,0.5)] md:hidden z-10"></div>
-                        
-                        <div class="w-full md:w-[45%] text-left md:text-right md:pr-12 md:pb-8 relative z-10 mt-2 md:mt-8">
-                            <div class="font-serif font-black text-[#d20000] text-[40px] tracking-wider opacity-80 md:hidden z-0 leading-none mb-1">2021</div>
-                            <div class="text-[#d20000] text-[12px] tracking-[0.15em] mb-1 font-medium">创始阶段</div>
-                            <h4 class="font-serif text-white text-[22px] md:text-[24px] font-bold mb-2 md:whitespace-nowrap">Mr Youngs 健康餐外卖</h4>
-                            <p class="text-[#888] text-[13px] leading-[1.8] max-w-[260px] md:max-w-[420px] md:ml-auto">从2人团队起步，以健康餐外卖为切入点，播下健康事业的第一粒种子。</p>
-                        </div>
-                        
+                        <div class="absolute left-[-7px] top-[20px] md:hidden z-10 timeline-node"></div>
+
+                        <div class="hidden md:block w-full md:w-[45%] md:pr-12"></div>
+
                         <div class="hidden md:flex flex-col relative w-[10%] items-center justify-start mt-[2.5rem]">
-                            <div class="font-serif font-bold text-[#d20000] text-[32px] tracking-wider mb-2 z-10 bg-[#161616] py-1">2021</div>
-                            <div class="w-2.5 h-2.5 bg-[#d20000] rounded-full z-10 shadow-[0_0_10px_rgba(210,0,0,0.5)]"></div>
+                            <div class="timeline-year-badge font-serif font-bold text-[#ff8d8d] text-[28px] tracking-[0.18em] mb-4 z-10">2021</div>
+                            <div class="timeline-node z-10"></div>
                         </div>
-                        
-                        <div class="hidden md:block w-full md:w-[45%] md:pl-12"></div>
+
+                        <div class="w-full md:w-[45%] text-left md:pl-12 md:pb-8 relative z-10 mt-2 md:mt-8">
+                            <div class="font-serif font-black text-[#d20000] text-[40px] tracking-wider opacity-80 md:hidden z-0 leading-none mb-3">2021</div>
+                            <div class="timeline-panel max-w-[420px]">
+                                <div class="timeline-kicker">转型 · 开启电商之路</div>
+                                <p class="text-white text-[13px] leading-[1.9] max-w-[280px] md:max-w-[360px]">首款燕麦代餐上线<br>从外卖转型大健康电商<br>发展方向全面清晰</p>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- 2022 -->
                     <div class="relative flex flex-col md:flex-row justify-between items-center md:items-stretch w-full mb-12 md:mb-12 fade-up pl-6 md:pl-0">
-                        <div class="absolute left-[-4px] top-[6px] w-[9px] h-[9px] bg-[#d20000] rounded-full shadow-[0_0_10px_rgba(210,0,0,0.5)] md:hidden z-10"></div>
-                        
-                        <div class="hidden md:block w-full md:w-[45%] md:pr-12"></div>
-                        
+                        <div class="absolute left-[-7px] top-[20px] md:hidden z-10 timeline-node"></div>
+
+                        <div class="w-full md:w-[45%] text-left md:text-right md:pr-12 md:pb-8 relative z-10 mt-2 md:mt-8">
+                            <div class="font-serif font-black text-[#d20000] text-[40px] tracking-wider opacity-80 md:hidden z-0 leading-none mb-3">2022</div>
+                            <div class="timeline-panel md:ml-auto max-w-[420px]">
+                                <div class="timeline-kicker md:justify-end">突破 · 核心产品确立</div>
+                                <p class="text-white text-[13px] leading-[1.9] max-w-[280px] md:max-w-[360px] md:ml-auto">坚守原则，放弃短期利益<br>2个月推出3款产品<br>神髓膏引爆增长</p>
+                            </div>
+                        </div>
+
                         <div class="hidden md:flex flex-col relative w-[10%] items-center justify-start mt-[2.5rem]">
-                            <div class="font-serif font-bold text-[#d20000] text-[32px] tracking-wider mb-2 z-10 bg-[#161616] py-1">2022</div>
-                            <div class="w-2.5 h-2.5 bg-[#d20000] rounded-full z-10 shadow-[0_0_10px_rgba(210,0,0,0.5)]"></div>
+                            <div class="timeline-year-badge font-serif font-bold text-[#ff8d8d] text-[28px] tracking-[0.18em] mb-4 z-10">2022</div>
+                            <div class="timeline-node z-10"></div>
                         </div>
-                        
-                        <div class="w-full md:w-[45%] text-left md:pl-12 md:pb-8 relative z-10 mt-2 md:mt-8">
-                            <div class="font-serif font-black text-[#d20000] text-[40px] tracking-wider opacity-80 md:hidden z-0 leading-none mb-1">2022</div>
-                            <div class="text-[#d20000] text-[12px] tracking-[0.15em] mb-1 font-medium">品牌创立</div>
-                            <h4 class="font-serif text-white text-[22px] md:text-[24px] font-bold mb-2 md:whitespace-nowrap">H&H Health Group Sdn Bhd</h4>
-                            <p class="text-[#888] text-[13px] leading-[1.8] max-w-[260px] md:max-w-[420px]">正式注册化公司，团队扩展至10人，开启健康品牌矩阵的系统性布局。</p>
-                        </div>
+
+                        <div class="hidden md:block w-full md:w-[45%] md:pl-12"></div>
                     </div>
 
                     <!-- 2023 -->
                     <div class="relative flex flex-col md:flex-row justify-between items-center md:items-stretch w-full mb-12 md:mb-12 fade-up pl-6 md:pl-0">
-                        <div class="absolute left-[-4px] top-[6px] w-[9px] h-[9px] bg-[#d20000] rounded-full shadow-[0_0_10px_rgba(210,0,0,0.5)] md:hidden z-10"></div>
-                        
-                        <div class="w-full md:w-[45%] text-left md:text-right md:pr-12 md:pb-8 relative z-10 mt-2 md:mt-8">
-                            <div class="font-serif font-black text-[#d20000] text-[40px] tracking-wider opacity-80 md:hidden z-0 leading-none mb-1">2023</div>
-                            <div class="text-[#d20000] text-[12px] tracking-[0.15em] mb-1 font-medium">线上扩张</div>
-                            <h4 class="font-serif text-white text-[22px] md:text-[24px] font-bold mb-2 md:whitespace-nowrap">Double H Online Sdn Bhd</h4>
-                            <p class="text-[#888] text-[13px] leading-[1.8] max-w-[260px] md:max-w-[420px] md:ml-auto">深耕电商赛道，团队扩展至20人，电商运营体系日趋成熟完善。</p>
-                        </div>
-                        
+                        <div class="absolute left-[-7px] top-[20px] md:hidden z-10 timeline-node"></div>
+
+                        <div class="hidden md:block w-full md:w-[45%] md:pr-12"></div>
+
                         <div class="hidden md:flex flex-col relative w-[10%] items-center justify-start mt-[2.5rem]">
-                            <div class="font-serif font-bold text-[#d20000] text-[32px] tracking-wider mb-2 z-10 bg-[#161616] py-1">2023</div>
-                            <div class="w-2.5 h-2.5 bg-[#d20000] rounded-full z-10 shadow-[0_0_10px_rgba(210,0,0,0.5)]"></div>
+                            <div class="timeline-year-badge font-serif font-bold text-[#ff8d8d] text-[28px] tracking-[0.18em] mb-4 z-10">2023</div>
+                            <div class="timeline-node z-10"></div>
                         </div>
-                        
-                        <div class="hidden md:block w-full md:w-[45%] md:pl-12"></div>
+
+                        <div class="w-full md:w-[45%] text-left md:pl-12 md:pb-8 relative z-10 mt-2 md:mt-8">
+                            <div class="font-serif font-black text-[#d20000] text-[40px] tracking-wider opacity-80 md:hidden z-0 leading-none mb-3">2023</div>
+                            <div class="timeline-panel max-w-[420px]">
+                                <div class="timeline-kicker">扩展 · 多品牌布局启动</div>
+                                <p class="text-white text-[13px] leading-[1.9] max-w-[280px] md:max-w-[360px]">开始多品牌布局<br>Newteeth / Newface诞生<br>产品矩阵逐步延伸<br>团队成长至15人</p>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- 2024 -->
                     <div class="relative flex flex-col md:flex-row justify-between items-center md:items-stretch w-full mb-12 md:mb-12 fade-up pl-6 md:pl-0">
-                        <div class="absolute left-[-4px] top-[6px] w-[9px] h-[9px] bg-[#d20000] rounded-full shadow-[0_0_10px_rgba(210,0,0,0.5)] md:hidden z-10"></div>
-                        
-                        <div class="hidden md:block w-full md:w-[45%] md:pr-12"></div>
-                        
+                        <div class="absolute left-[-7px] top-[20px] md:hidden z-10 timeline-node"></div>
+
+                        <div class="w-full md:w-[45%] text-left md:text-right md:pr-12 md:pb-8 relative z-10 mt-2 md:mt-8">
+                            <div class="font-serif font-black text-[#d20000] text-[40px] tracking-wider opacity-80 md:hidden z-0 leading-none mb-3">2024</div>
+                            <div class="timeline-panel md:ml-auto max-w-[420px]">
+                                <div class="timeline-kicker md:justify-end">增长 · 品牌影响力提升</div>
+                                <p class="text-white text-[13px] leading-[1.9] max-w-[280px] md:max-w-[360px] md:ml-auto">HH老板IP走红｜品牌影响力提升<br>渠道全面拓展<br>产品扩展至近20款<br>团队突破40人</p>
+                            </div>
+                        </div>
+
                         <div class="hidden md:flex flex-col relative w-[10%] items-center justify-start mt-[2.5rem]">
-                            <div class="font-serif font-bold text-[#d20000] text-[32px] tracking-wider mb-2 z-10 bg-[#161616] py-1">2024</div>
-                            <div class="w-2.5 h-2.5 bg-[#d20000] rounded-full z-10 shadow-[0_0_10px_rgba(210,0,0,0.5)]"></div>
+                            <div class="timeline-year-badge font-serif font-bold text-[#ff8d8d] text-[28px] tracking-[0.18em] mb-4 z-10">2024</div>
+                            <div class="timeline-node z-10"></div>
                         </div>
-                        
-                        <div class="w-full md:w-[45%] text-left md:pl-12 md:pb-8 relative z-10 mt-2 md:mt-8">
-                            <div class="font-serif font-black text-[#d20000] text-[40px] tracking-wider opacity-80 md:hidden z-0 leading-none mb-1">2024</div>
-                            <div class="text-[#d20000] text-[12px] tracking-[0.15em] mb-1 font-medium">集团升级</div>
-                            <h4 class="font-serif text-white text-[22px] md:text-[24px] font-bold mb-2 md:whitespace-nowrap">Yusome Group Sdn Bhd</h4>
-                            <p class="text-[#888] text-[13px] leading-[1.8] max-w-[260px] md:max-w-[420px]">集团化升级，团队扩展至30人，品牌矩阵更加多元，市场影响力持续提升。</p>
-                        </div>
+
+                        <div class="hidden md:block w-full md:w-[45%] md:pl-12"></div>
                     </div>
-                    
+
                     <!-- 2025 -->
                     <div class="relative flex flex-col md:flex-row justify-between items-center md:items-stretch w-full mb-16 md:mb-12 fade-up pl-6 md:pl-0">
-                        <div class="absolute left-[-4px] top-[6px] w-[9px] h-[9px] bg-[#d20000] rounded-full shadow-[0_0_10px_rgba(210,0,0,0.5)] md:hidden z-10"></div>
-                        
-                        <div class="w-full md:w-[45%] text-left md:text-right md:pr-12 md:pb-8 relative z-10 mt-2 md:mt-8">
-                            <div class="font-serif font-black text-[#d20000] text-[40px] tracking-wider opacity-80 md:hidden z-0 leading-none mb-1">2025</div>
-                            <div class="text-[#d20000] text-[12px] tracking-[0.15em] mb-1 font-medium">荣耀之年</div>
-                            <h4 class="font-serif text-white text-[22px] md:text-[24px] font-bold mb-2 md:whitespace-nowrap">荣获吉尼斯世界纪录 · 金牛奖</h4>
-                            <p class="text-[#888] text-[13px] leading-[1.8] max-w-[280px] md:max-w-[420px] md:ml-auto">团队扩展至45人，斩获"Malaysia Book of Record"、"金牛奖"等国际权威荣誉，实现全马健康行业世界级荣誉的突破。</p>
-                        </div>
-                        
+                        <div class="absolute left-[-7px] top-[20px] md:hidden z-10 timeline-node"></div>
+
+                        <div class="hidden md:block w-full md:w-[45%] md:pr-12"></div>
+
                         <div class="hidden md:flex flex-col relative w-[10%] items-center justify-start mt-[2.5rem]">
-                            <div class="font-serif font-bold text-[#d20000] text-[32px] tracking-wider mb-2 z-10 bg-[#161616] py-1">2025</div>
-                            <div class="w-2.5 h-2.5 bg-[#d20000] rounded-full z-10 shadow-[0_0_10px_rgba(210,0,0,0.5)]"></div>
+                            <div class="timeline-year-badge font-serif font-bold text-[#ff8d8d] text-[28px] tracking-[0.18em] mb-4 z-10">2025</div>
+                            <div class="timeline-node z-10"></div>
                         </div>
-                        
-                        <div class="hidden md:block w-full md:w-[45%] md:pl-12"></div>
+
+                        <div class="w-full md:w-[45%] text-left md:pl-12 md:pb-8 relative z-10 mt-2 md:mt-8">
+                            <div class="font-serif font-black text-[#d20000] text-[40px] tracking-wider opacity-80 md:hidden z-0 leading-none mb-3">2025</div>
+                            <div class="timeline-panel max-w-[420px]">
+                                <div class="timeline-kicker">跃升 · 企业规模全面升级</div>
+                                <p class="text-white text-[13px] leading-[1.9] max-w-[280px] md:max-w-[360px]">产品突破30+<br>健康版图持续扩展<br>团队达60人</p>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- 2026 -->
                     <div class="relative flex flex-col md:flex-row justify-between items-center md:items-stretch w-full mb-4 md:mb-0 fade-up pl-6 md:pl-0">
-                        <div class="absolute left-[-4px] top-[6px] w-[9px] h-[9px] bg-[#d20000] rounded-full shadow-[0_0_10px_rgba(210,0,0,0.5)] md:hidden z-10"></div>
-                        
-                        <div class="hidden md:block w-full md:w-[45%] md:pr-12"></div>
-                        
+                        <div class="absolute left-[-7px] top-[20px] md:hidden z-10 timeline-node"></div>
+
+                        <div class="w-full md:w-[45%] text-left md:text-right md:pr-12 md:pb-8 relative z-10 mt-2 md:mt-8">
+                            <div class="font-serif font-black text-[#d20000] text-[40px] tracking-wider opacity-80 md:hidden z-0 leading-none mb-3">2026</div>
+                            <div class="timeline-panel md:ml-auto max-w-[420px]">
+                                <div class="timeline-kicker md:justify-end">跃迁 · 迈向国际舞台</div>
+                                <p class="text-white text-[13px] leading-[1.9] max-w-[280px] md:max-w-[360px] md:ml-auto">签约香港与新加坡著名艺人｜强化品牌IP<br>用户规模达20万<br>品牌影响力持续放大</p>
+                            </div>
+                        </div>
+
                         <div class="hidden md:flex flex-col relative w-[10%] items-center justify-start mt-[2.5rem]">
-                            <div class="font-serif font-bold text-[#d20000] text-[32px] tracking-wider mb-2 z-10 bg-[#161616] py-1">2026</div>
-                            <div class="w-2.5 h-2.5 bg-[#d20000] rounded-full z-10 shadow-[0_0_10px_rgba(210,0,0,0.5)]"></div>
+                            <div class="timeline-year-badge font-serif font-bold text-[#ff8d8d] text-[28px] tracking-[0.18em] mb-4 z-10">2026</div>
+                            <div class="timeline-node z-10"></div>
                         </div>
-                        
-                        <div class="w-full md:w-[45%] text-left md:pl-12 md:pb-8 relative z-10 mt-2 md:mt-8">
-                            <div class="font-serif font-black text-[#d20000] text-[40px] tracking-wider opacity-80 md:hidden z-0 leading-none mb-1">2026</div>
-                            <div class="text-[#d20000] text-[12px] tracking-[0.15em] mb-1 font-medium">健康市场领导者</div>
-                            <h4 class="font-serif text-white text-[22px] md:text-[24px] font-bold mb-2 md:whitespace-nowrap">签约各大明星 · 用户规模达1亿</h4>
-                            <p class="text-[#888] text-[13px] leading-[1.8] max-w-[260px] md:max-w-[420px]">品牌影响力强势扩大，签约各大明星代言，用户规模突破1亿，正式成为健康市场领导者。</p>
-                        </div>
+
+                        <div class="hidden md:block w-full md:w-[45%] md:pl-12"></div>
                     </div>
                 </div>
             </div>
@@ -496,7 +744,7 @@
                         <div class="text-2xl text-primary font-serif italic mb-8">首席执行官 · 创始人</div>
                         
                         <p class="text-gray-600 text-lg leading-relaxed mb-10 text-justify">
-                            从三流青年到百万企业创始人，于2022年对市场趋势有着敏锐的洞察力和前瞻性的思维，能够精准把握行业发展的脉搏，制定出符合公司发展战略的决策。
+                            5年保健美容公司H&amp;H Health Group的创办人，1张吉尼斯世界纪录保持者，3张Malaysia Book of Record持有者，2025年在Meta投入的广告费高达14 Million，主要销售渠道分布为Facebook，Live直播，Shopee，OTO Pharmacy，线上线下无所不在
                         </p>
                         
                         <div class="grid grid-cols-2 gap-4 border-t border-gray-200 pt-8">
@@ -748,6 +996,62 @@
             </div>
         </section>
 
+        <section class="py-24 bg-[#fff8f4] relative z-10">
+            <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-14 fade-up flex flex-col items-start">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-[30px] h-[1px] bg-[#d20000]"></div>
+                        <span class="text-[#d20000] font-medium tracking-[0.2em] text-[13px]">纪录荣誉</span>
+                    </div>
+                    <h2 class="font-serif font-black text-[#1a1a1a] tracking-wide text-[40px] md:text-[52px]">权威纪录奖项</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 fade-up">
+                    <article class="bg-white rounded-[28px] overflow-hidden border border-[#f1dfd8] shadow-[0_20px_50px_rgba(93,35,35,0.08)] flex flex-col">
+                        <div class="relative aspect-[4/5] bg-gradient-to-br from-[#fff7f2] to-[#fff] cursor-pointer overflow-hidden flex items-center justify-center p-4" onclick="openModal('image/20264.png')">
+                            <img src="image/20264.png" alt="马来西亚纪录大全 - The Malaysia Book of Records" class="w-full h-full object-contain">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-serif font-black text-[28px] leading-tight text-[#1f1f1f] mb-5">马来西亚纪录大全 - The Malaysia book of Records</h3>
+                            <div class="text-[15px] text-[#555] leading-[1.95] space-y-4">
+                                <p>以热销印证口碑，以规模彰显影响。</p>
+                                <p>HH LE AURA 系列香水突破界限，荣登 Malaysia Book of Records，</p>
+                                <p>于2026年1月17日成为马来西亚「Facebook 直播单日售出最多香水瓶数」纪录保持者，单日斩获 5,493 瓶 的辉煌战绩，进一步巩固其在行业中的地位与品牌影响力。</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-[28px] overflow-hidden border border-[#f1dfd8] shadow-[0_20px_50px_rgba(93,35,35,0.08)] flex flex-col">
+                        <div class="relative aspect-[4/5] bg-gradient-to-br from-[#fff7f2] to-[#fff] cursor-pointer overflow-hidden flex items-center justify-center p-4" onclick="openModal('image/2024.png')">
+                            <img src="image/2024.png" alt="销售额纪录 - Highest sales value of herbal joint cream sold in one hour" class="w-full h-full object-contain">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-serif font-black text-[28px] leading-tight text-[#1f1f1f] mb-5">销售额纪录 - Highest sales value of herbal joint cream sold in one hour</h3>
+                            <div class="text-[15px] text-[#555] leading-[1.95] space-y-4">
+                                <p>以实力见证信任，以成绩定义高度。</p>
+                                <p>神髓膏于 2024年10月9日 荣获 Malaysia Book of Records 认证，</p>
+                                <p>成功创下「一小时内最高销售额草本关节药膏」纪录，在短短一小时内突破 RM281,473 销售额，充分体现品牌强大的市场号召力与消费者认可。</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-[28px] overflow-hidden border border-[#f1dfd8] shadow-[0_20px_50px_rgba(93,35,35,0.08)] flex flex-col">
+                        <div class="relative aspect-[4/5] bg-gradient-to-br from-[#fff7f2] to-[#fff] cursor-pointer overflow-hidden flex items-center justify-center p-4" onclick="openModal('image/2024.png')">
+                            <img src="image/2024.png" alt="销量纪录 - Most herbal joint cream bottles sold in one hour" class="w-full h-full object-contain">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-serif font-black text-[28px] leading-tight text-[#1f1f1f] mb-5">销量纪录 - Most herbal joint cream bottles sold in one hour</h3>
+                            <div class="text-[15px] text-[#555] leading-[1.95] space-y-4">
+                                <p>以热销印证口碑，以规模彰显影响。</p>
+                                <p>同日，神髓膏再创里程碑，荣登 Malaysia Book of Records，</p>
+                                <p>成为「一小时内售出最多瓶数草本关节药膏」纪录保持者，实现 4,404 瓶 的惊人销量，进一步巩固其在行业中的领先地位与品牌影响力。</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <!-- Section 6: Social Media -->
         <section class="py-[100px] bg-[#161616] relative z-10">
             <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -889,21 +1193,19 @@
                         <h2 class="font-serif text-[#1a1a1a]" style="font-weight: 900; font-size: clamp(40px, 5vw, 64px); line-height: 1; margin-bottom: 24px;">神髓膏</h2>
                         
                         <p style="font-size: 15px; color: #555; line-height: 1.9; margin-bottom: 32px; max-w: 600px;">
-                            作为HH品牌的旗舰级标杆产品，荣膺"马来西亚纪录大全"权威认证，斩获年度最佳健康保健品大奖。针对50肩与颈椎劳损提供系统化缓解方案。
+                            J神髓膏 作为 HH 品牌旗舰产品<br>
+                            以传统中医理论为根基，融合现代科研技术研发
                         </p>
                         
                         <ul class="flex flex-col gap-3">
                             <li class="flex items-center text-[14px] text-[#444]">
-                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>针对50肩与颈椎劳损提供系统化缓解方案
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>荣获 Guinness World Record
                             </li>
                             <li class="flex items-center text-[14px] text-[#444]">
-                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>精准应对关节红肿痛症
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>Malaysia Book of Records 双重认证
                             </li>
                             <li class="flex items-center text-[14px] text-[#444]">
-                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>加速运动损伤及韧带扭伤康复进程
-                            </li>
-                            <li class="flex items-center text-[14px] text-[#444]">
-                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>Malaysia Book of Records 权威认证大奖得主
+                                <span class="w-2 h-2 rounded-full bg-[#d20000] mr-3 flex-shrink-0"></span>持续引领关节护理领域发展
                             </li>
                         </ul>
 
@@ -912,7 +1214,7 @@
 
                         <!-- Target group tag -->
                         <div>
-                            <span class="inline-block bg-[#fff0f0] border border-[#ffcccc] text-[#d20000] rounded-full px-4 py-1.5 text-[12px] font-medium">适合：关节疼痛 · 运动损伤 · 五十肩人群</span>
+                            <span class="inline-block bg-[#fff0f0] border border-[#ffcccc] text-[#d20000] rounded-full px-4 py-1.5 text-[12px] font-medium">专注关节与筋骨护理、实现消炎、修复与调理三重作用</span>
                         </div>
                     </div>
                 </div>
@@ -985,7 +1287,7 @@
                         <h2 class="font-serif text-[#1a1a1a]" style="font-weight: 900; font-size: clamp(40px, 5vw, 64px); line-height: 1; margin-bottom: 24px;">神塑燕麦</h2>
                         
                         <p style="font-size: 15px; color: #555; line-height: 1.9; margin-bottom: 32px; max-w: 600px;">
-                            首发即登顶细分类目销量冠军，凭借显著的减脂功效，赢得精准塑形群体的高度认可与品牌忠诚。不但减脂，还能有效缓解肠胃不适。
+                            首发即登顶，长效蝉联细分领域销量冠军，凭借显著的减脂功效，赢得精准塑形群体的高度认可与品牌忠诚。有效缓解胃痛与胃酸分泌失衡，瘦身，改善腹部胀气
                         </p>
                         
                         <ul class="flex flex-col gap-3">
@@ -1033,7 +1335,7 @@
                         <h2 class="font-serif text-[#1a1a1a]" style="font-weight: 900; font-size: clamp(40px, 5vw, 64px); line-height: 1; margin-bottom: 24px;">神发喷雾</h2>
                         
                         <p style="font-size: 15px; color: #555; line-height: 1.9; margin-bottom: 32px; max-w: 600px;">
-                            作为明星单品生发喷雾搭配洗护套装，深受广大养发发烧友的信赖。采用天然植物精华配方，从根源解决脱发问题，重建健康发囊环境，让每一根发丝重获生机。
+                            作为明星单品生发喷雾搭配洗护套装，深受广大养发发烧友的信赖。
                         </p>
                         
                         <ul class="flex flex-col gap-3">
@@ -1161,11 +1463,11 @@
                             <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">JOIGRAIN</div>
                             <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">补骨营养代餐</h4>
                             <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>修复软骨</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>强化骨密度</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>高效补钙</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>有助于修复软骨，增加肌肉</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>强化神经</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>强化骨密度，补钙</li>
                             </ul>
-                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 骨质疏松、缺钙人群</div>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 关节疼痛，脚腿抽筋，肌肉流失，走路没力，腿脚麻木</div>
                         </div>
                         <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
                     </div>
@@ -1256,11 +1558,11 @@
                             <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NEWFACE</div>
                             <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">神颜系列</h4>
                             <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>淡斑祛痘</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>抗初老防护</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>深层补水保湿</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>有助于淡斑、修复肌肤、祛痘</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>紧致、抗老、消炎</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>深层补水</li>
                             </ul>
-                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 色斑、长痘、干燥肌肤</div>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 老人斑、脸色暗黄、毛孔粗大、痘痘皮肤、皮肤下垂</div>
                         </div>
                         <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
                     </div>
@@ -1275,11 +1577,11 @@
                             <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NULLAGEN</div>
                             <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">水光胶原蛋白</h4>
                             <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>淡斑美白</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>显著减少细纹</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>紧致提拉肌肤</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>有助于淡斑美白，减少细纹干纹</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>提亮均匀肤色</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>抗老紧致提拉</li>
                             </ul>
-                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 皮肤松弛、暗沉、细纹人群</div>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 脸上色斑明显、浮肿松弛困扰、苹果肌慢慢垮塌</div>
                         </div>
                         <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
                     </div>
@@ -1294,11 +1596,11 @@
                             <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NUHEART</div>
                             <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">心生命</h4>
                             <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>减少中风风险</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>深层清理血管</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>长效维持血压</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>有助于减少中风和心血管病</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>清理血管油脂</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>维持血压指数</li>
                             </ul>
-                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 血管阻塞、高血压、中风高危</div>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 血压高，胸闷气短，血管发炎，胆固醇高，精神差</div>
                         </div>
                         <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
                     </div>
@@ -1313,11 +1615,11 @@
                             <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NUEYE</div>
                             <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">清肝明目粉</h4>
                             <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>促进眼部血液循环</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>修复眼部神经</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>降低眼压与疲劳</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>有助于促进眼睛血液循环</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>激活眼细胞，修复眼神经</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>降眼压</li>
                             </ul>
-                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 视力模糊、高眼压、用眼过度</div>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 白内障，青光眼，飞蚊症，近视老花，散光，干眼症</div>
                         </div>
                         <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
                     </div>
@@ -1332,11 +1634,11 @@
                             <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">OXYROOTS</div>
                             <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">氧肺王</h4>
                             <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>缓解长年咳嗽</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>深层排毒化痰</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>修复受损呼吸道</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>有助于缓解咳嗽、排毒化痰</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>消炎杀菌</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>修复呼吸道黏膜</li>
                             </ul>
-                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 久咳不愈、痰多、呼吸道脆弱</div>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 容易喘、鼻塞、干痒、气提不起来、常流鼻血</div>
                         </div>
                         <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
                     </div>
@@ -1351,11 +1653,11 @@
                             <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">URIDOX</div>
                             <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">清肾降酸饮</h4>
                             <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>高效降尿酸</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>降低肾脏坏指数</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>快速缓解痛风</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>有助于降尿酸、胆固醇</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>降肾脏指数</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>清肾</li>
                             </ul>
-                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 高尿酸、痛风、肾脏负担重</div>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 高尿酸、痛风、肾结石、尿泡泡、肾功能弱</div>
                         </div>
                         <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
                     </div>
@@ -1370,11 +1672,11 @@
                             <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NULIVA</div>
                             <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">清肝王</h4>
                             <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>深度护肝清肝</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>排出长期肝毒</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>降低体内胆固醇</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>有助于护肝，清肝火</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>排肝毒</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>同时降胆固醇</li>
                             </ul>
-                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 熬夜伤肝、高胆固醇、应酬多</div>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 肝炎肝指数高，脂肪肝，高胆固醇</div>
                         </div>
                         <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
                     </div>
@@ -1389,11 +1691,11 @@
                             <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">NULIFE</div>
                             <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">双仙人掌</h4>
                             <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>强效增强免疫力</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>双倍抗瘤成分</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>舒缓化疗副作用</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>有助于增强免疫力，双倍抗瘤</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>术后修复，舒缓化疗副作用</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>改善妇科病，提高肝脏解毒功能</li>
                             </ul>
-                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 免疫力低下、化疗病患、抗瘤</div>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 肿瘤癌症/免疫力低</div>
                         </div>
                         <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
                     </div>
@@ -1408,11 +1710,11 @@
                             <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">HOKUN</div>
                             <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">清肝助眠粉</h4>
                             <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>清解肝火健脑</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>稳定三高指标</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>显著提升睡眠质量</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>属于全方位营养品</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>有助于清肝火，排肝毒</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>补脑健脑，稳定三高提升睡眠质量</li>
                             </ul>
-                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 睡眠差、易怒肝火旺、三高患者</div>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 睡眠质量较差，失眠症</div>
                         </div>
                         <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
                     </div>
@@ -1427,11 +1729,11 @@
                             <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">CELLDOX</div>
                             <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">排毒清肠饮</h4>
                             <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>专业级排毒化脂</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>彻底改善便秘</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>深层分解宿便毒素</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>有助于改善便秘和大便干硬</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>分解宿便毒素</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>促进肠道蠕动</li>
                             </ul>
-                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 长年便秘、宿便排毒不畅者</div>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 长期便秘，排便不顺，腹胀气，口臭屁臭，精神差</div>
                         </div>
                         <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
                     </div>
@@ -1446,11 +1748,11 @@
                             <div class="text-[11px] font-bold text-[#d20000] tracking-[0.25em] mb-2 uppercase">EZYBATH</div>
                             <h4 class="font-serif font-black text-2xl text-gray-900 mb-5">抑菌沐浴露</h4>
                             <ul class="text-gray-600 text-[14px] mb-6 space-y-2 leading-relaxed">
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>高效止痒消炎</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>修复脆弱皮肤屏障</li>
-                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>抑制皮炎与湿疹</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>有助于止痒，消炎</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>修复受损屏障，补充皮肤营养</li>
+                                <li class="flex items-start"><span class="text-[#d20000] mr-2">✦</span>增强皮肤免疫力，降低敏感度</li>
                             </ul>
-                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 皮肤瘙痒、湿疹、屏障受损</div>
+                            <div class="text-[12px] text-gray-400 font-medium pt-4 border-t border-gray-100">适合人群: 湿疹，牛皮癣，鸡皮肤，荨麻疹，敏感，干裂脱皮</div>
                         </div>
                         <div class="absolute bottom-0 left-0 h-[4px] bg-[#d20000] w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
                     </div>
@@ -1471,6 +1773,80 @@
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-2xl hover:shadow-primary/50 transition duration-500 cursor-pointer group" onclick="openModal('image/rz2.png')">
                         <img src="image/rz2.png" alt="Certification 2" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#fffaf6] relative overflow-hidden">
+            <div class="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle,_rgba(210,0,0,0.12),_transparent_72%)] blur-3xl pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-12 fade-up">
+                    <span class="text-primary font-bold tracking-widest text-sm uppercase">品牌矩阵</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-black mt-2 text-gray-900">品牌药店合作</h2>
+                </div>
+
+                <div class="brand-carousel-shell fade-up" data-carousel>
+                    <div class="brand-carousel-viewport" data-carousel-viewport>
+                        <div class="brand-carousel-track">
+                            <article class="brand-carousel-slide">
+                                <div class="brand-carousel-card">
+                                    <div class="brand-carousel-media" onclick="openModal('image/brand1.png')">
+                                        <img src="image/brand1.png" alt="品牌展图 1">
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="brand-carousel-slide">
+                                <div class="brand-carousel-card">
+                                    <div class="brand-carousel-media" onclick="openModal('image/brand2.png')">
+                                        <img src="image/brand2.png" alt="品牌展图 2">
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="brand-carousel-slide">
+                                <div class="brand-carousel-card">
+                                    <div class="brand-carousel-media" onclick="openModal('image/brand3.png')">
+                                        <img src="image/brand3.png" alt="品牌展图 3">
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="brand-carousel-slide">
+                                <div class="brand-carousel-card">
+                                    <div class="brand-carousel-media" onclick="openModal('image/brand4.png')">
+                                        <img src="image/brand4.png" alt="品牌展图 4">
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="brand-carousel-slide">
+                                <div class="brand-carousel-card">
+                                    <div class="brand-carousel-media" onclick="openModal('image/brand5.png')">
+                                        <img src="image/brand5.png" alt="品牌展图 5">
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="brand-carousel-slide">
+                                <div class="brand-carousel-card">
+                                    <div class="brand-carousel-media" onclick="openModal('image/brand6.png')">
+                                        <img src="image/brand6.png" alt="品牌展图 6">
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="brand-carousel-controls">
+                        <div class="brand-carousel-dots" data-carousel-dots>
+                            <button type="button" class="brand-carousel-dot active" data-carousel-dot="0" aria-label="切换到第 1 张"></button>
+                            <button type="button" class="brand-carousel-dot" data-carousel-dot="1" aria-label="切换到第 2 张"></button>
+                            <button type="button" class="brand-carousel-dot" data-carousel-dot="2" aria-label="切换到第 3 张"></button>
+                            <button type="button" class="brand-carousel-dot" data-carousel-dot="3" aria-label="切换到第 4 张"></button>
+                            <button type="button" class="brand-carousel-dot" data-carousel-dot="4" aria-label="切换到第 5 张"></button>
+                            <button type="button" class="brand-carousel-dot" data-carousel-dot="5" aria-label="切换到第 6 张"></button>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button type="button" class="brand-carousel-button" data-carousel-prev aria-label="上一张">&#8249;</button>
+                            <button type="button" class="brand-carousel-button" data-carousel-next aria-label="下一张">&#8250;</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2022,9 +2398,77 @@
             });
         });
 
+        function initBrandCarousel() {
+            document.querySelectorAll('[data-carousel]').forEach(carousel => {
+                const viewport = carousel.querySelector('[data-carousel-viewport]');
+                const slides = Array.from(carousel.querySelectorAll('.brand-carousel-slide'));
+                const dots = Array.from(carousel.querySelectorAll('[data-carousel-dot]'));
+                const prevButton = carousel.querySelector('[data-carousel-prev]');
+                const nextButton = carousel.querySelector('[data-carousel-next]');
+
+                if (!viewport || !slides.length) return;
+
+                let currentIndex = 0;
+                let intervalId;
+
+                const updateDots = () => {
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentIndex);
+                    });
+                };
+
+                const goToSlide = (index) => {
+                    currentIndex = (index + slides.length) % slides.length;
+                    viewport.scrollTo({
+                        left: slides[currentIndex].offsetLeft - viewport.offsetLeft,
+                        behavior: 'smooth'
+                    });
+                    updateDots();
+                };
+
+                const startAutoPlay = () => {
+                    clearInterval(intervalId);
+                    intervalId = setInterval(() => {
+                        goToSlide(currentIndex + 1);
+                    }, 3000);
+                };
+
+                const stopAutoPlay = () => {
+                    clearInterval(intervalId);
+                };
+
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        goToSlide(index);
+                        startAutoPlay();
+                    });
+                });
+
+                prevButton?.addEventListener('click', () => {
+                    goToSlide(currentIndex - 1);
+                    startAutoPlay();
+                });
+
+                nextButton?.addEventListener('click', () => {
+                    goToSlide(currentIndex + 1);
+                    startAutoPlay();
+                });
+
+                carousel.addEventListener('mouseenter', stopAutoPlay);
+                carousel.addEventListener('mouseleave', startAutoPlay);
+                carousel.addEventListener('focusin', stopAutoPlay);
+                carousel.addEventListener('focusout', startAutoPlay);
+                window.addEventListener('resize', () => goToSlide(currentIndex));
+
+                updateDots();
+                startAutoPlay();
+            });
+        }
+
         // Initialize animations on load
         window.addEventListener('DOMContentLoaded', () => {
             observeElements();
+            initBrandCarousel();
         });
     </script>
 
