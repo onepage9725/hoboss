@@ -385,13 +385,16 @@
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
-                    <button onclick="navigate('home')" class="nav-link active text-gray-600 hover:text-primary transition">首页</button>
-                    <button onclick="navigate('products')" class="nav-link text-gray-600 hover:text-primary transition">产品系列</button>
-                    <button onclick="navigate('charity')" class="nav-link text-gray-600 hover:text-primary transition">公益活动</button>
+                    <button onclick="navigate('home')" class="nav-link active text-gray-600 hover:text-primary transition text-center leading-tight">首页<br><span class="text-[11px] font-medium text-gray-500">Home Page</span></button>
+                    <button onclick="navigate('products')" class="nav-link text-gray-600 hover:text-primary transition text-center leading-tight">产品系列<br><span class="text-[11px] font-medium text-gray-500">Product Series</span></button>
+                    <button onclick="navigate('charity')" class="nav-link text-gray-600 hover:text-primary transition text-center leading-tight">公益活动<br><span class="text-[11px] font-medium text-gray-500">Charity</span></button>
                     <!-- Social Media Dropdown -->
                     <div class="relative group">
                         <button class="nav-link text-gray-600 hover:text-primary transition flex items-center h-full">
-                            社交媒体
+                            <span class="text-center leading-tight">
+                                <span class="block">社交媒体</span>
+                                <span class="block text-[11px] font-medium text-gray-500">Social Media</span>
+                            </span>
                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="absolute left-1/2 -translate-x-1/2 mt-0 w-32 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-red-50 overflow-hidden">
@@ -415,11 +418,11 @@
         <!-- Mobile Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-red-50 absolute w-full shadow-xl">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <button onclick="navigate('home')" class="block w-full text-left px-3 py-3 text-base font-medium text-gray-900 border-b border-gray-100">首页</button>
-                <button onclick="navigate('products')" class="block w-full text-left px-3 py-3 text-base font-medium text-gray-900 border-b border-gray-100">产品系列</button>
-                <button onclick="navigate('charity')" class="block w-full text-left px-3 py-3 text-base font-medium text-gray-900">公益活动</button>
+                <button onclick="navigate('home')" class="block w-full text-left px-3 py-3 text-base font-medium text-gray-900 border-b border-gray-100 leading-tight">首页<br><span class="text-[12px] font-medium text-gray-500">Home Page</span></button>
+                <button onclick="navigate('products')" class="block w-full text-left px-3 py-3 text-base font-medium text-gray-900 border-b border-gray-100 leading-tight">产品系列<br><span class="text-[12px] font-medium text-gray-500">Product Series</span></button>
+                <button onclick="navigate('charity')" class="block w-full text-left px-3 py-3 text-base font-medium text-gray-900 leading-tight">公益活动<br><span class="text-[12px] font-medium text-gray-500">Charity</span></button>
                 <div class="border-b border-gray-100 pb-2">
-                    <div class="px-3 py-3 text-base font-medium text-gray-900">社交媒体</div>
+                    <div class="px-3 py-3 text-base font-medium text-gray-900 leading-tight">社交媒体<br><span class="text-[12px] font-medium text-gray-500">Social Media</span></div>
                     <div class="pl-6 space-y-1">
                         <a href="https://www.xiaohongshu.com/user/profile/5c1a7a1c0000000007011d61" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary">小红书</a>
                         <a href="https://www.facebook.com/HHBOSS79" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary">Facebook</a>
@@ -451,6 +454,9 @@
                         <span class="block text-white">凝聚平凡人</span>
                         <span class="block text-gradient">共创辉煌业</span>
                     </h1>
+                    <p class="text-white/90 mb-6 leading-relaxed text-base md:text-lg max-w-3xl mx-auto font-medium">
+                        A science-based wellness platform since 2021, empowering families with quality care and individuals with limitless business opportunities.
+                    </p>
                     <p class="text-gray-300 mb-10 leading-relaxed text-lg max-w-2xl mx-auto font-medium">
                         由平凡人共同筑建的健康大健康平台。自2021年创立以来，我们秉承天然科学的健康理念，致力于为上百万家庭提供高品质的健康与护理解决方案，同时为有志之士打造无边界的创业平台。
                     </p>
@@ -567,7 +573,7 @@
                 <div class="mb-[80px] fade-up flex flex-col items-start">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-[30px] h-[1px] bg-[#d20000]"></div>
-                        <span class="text-[#d20000] font-medium tracking-[0.2em] text-[13px]">发展历程</span>
+                        <span class="text-[#d20000] font-medium tracking-[0.2em] text-[13px]">发展历程 Development History</span>
                     </div>
                     <h2 class="font-serif font-black text-white tracking-widest text-[40px] md:text-[56px]">从起步到领航</h2>
                 </div>
@@ -756,7 +762,7 @@
                                         2025
                                         <div class="absolute -bottom-1 left-0 w-[40%] h-[3px] bg-primary group-hover:w-full transition-all duration-300 rounded-full"></div>
                                     </div>
-                                    <div class="text-gray-800 font-bold text-sm tracking-wide mt-3">吉斯尼世界纪录持有者</div>
+                                    <div class="text-gray-800 font-bold text-sm tracking-wide mt-3">吉尼斯世界纪录持有者<br>Guinness World Record holder</div>
                                 </div>
                             </div>
                             <!-- Card 2 -->
@@ -768,7 +774,7 @@
                                         2025
                                         <div class="absolute -bottom-1 left-0 w-[40%] h-[3px] bg-primary group-hover:w-full transition-all duration-300 rounded-full"></div>
                                     </div>
-                                    <div class="text-gray-800 font-bold text-sm tracking-wide mt-3">南阳商报10大杰出青年</div>
+                                    <div class="text-gray-800 font-bold text-sm tracking-wide mt-3">南阳商报10大杰出青年<br>Nanyang Top 10 Iconic Young Leaders Award</div>
                                 </div>
                             </div>
                             <!-- Card 3 -->
@@ -780,7 +786,7 @@
                                         2025
                                         <div class="absolute -bottom-1 left-0 w-[40%] h-[3px] bg-primary group-hover:w-full transition-all duration-300 rounded-full"></div>
                                     </div>
-                                    <div class="text-gray-800 font-bold text-sm tracking-wide mt-3">3张 Malaysia Book of Record</div>
+                                    <div class="text-gray-800 font-bold text-sm tracking-wide mt-3">3张马来西亚纪录大全<br>3 Malaysia Book of Records titles</div>
                                 </div>
                             </div>
                             <!-- Card 4 -->
@@ -792,7 +798,7 @@
                                         2025
                                         <div class="absolute -bottom-1 left-0 w-[40%] h-[3px] bg-primary group-hover:w-full transition-all duration-300 rounded-full"></div>
                                     </div>
-                                    <div class="text-gray-800 font-bold text-sm tracking-wide mt-3">金牛奖获奖者</div>
+                                    <div class="text-gray-800 font-bold text-sm tracking-wide mt-3">金牛奖获奖者<br>The Golden Bull Award</div>
                                 </div>
                             </div>
                             <!-- Card 5 -->
@@ -804,7 +810,7 @@
                                         2026
                                         <div class="absolute -bottom-1 left-0 w-[40%] h-[3px] bg-primary group-hover:w-full transition-all duration-300 rounded-full"></div>
                                     </div>
-                                    <div class="text-gray-800 font-bold text-sm tracking-wide mt-3">ASEAN & ASIA Record</div>
+                                    <div class="text-gray-800 font-bold text-sm tracking-wide mt-3">东盟与亚洲纪录<br>ASEAN & ASIA Records</div>
                                 </div>
                             </div>
                             <!-- Card 6 -->
@@ -816,7 +822,7 @@
                                         2026
                                         <div class="absolute -bottom-1 left-0 w-[40%] h-[3px] bg-primary group-hover:w-full transition-all duration-300 rounded-full"></div>
                                     </div>
-                                    <div class="text-gray-800 font-bold text-sm tracking-wide mt-3">光明企业杰出电商勇士奖</div>
+                                    <div class="text-gray-800 font-bold text-sm tracking-wide mt-3">光明企业杰出电商勇士奖<br>Guang Ming Outstanding E-Commerce Hero Award</div>
                                 </div>
                             </div>
                         </div>
@@ -830,7 +836,7 @@
                 <div class="mb-14 fade-up flex flex-col items-start">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-[30px] h-[1px] bg-[#d20000]"></div>
-                        <span class="text-[#d20000] font-medium tracking-[0.2em] text-[13px]">纪录荣誉</span>
+                        <span class="text-[#d20000] font-medium tracking-[0.2em] text-[13px]">纪录荣誉 Corporate Honors</span>
                     </div>
                     <h2 class="font-serif font-black text-[#1a1a1a] tracking-wide text-[40px] md:text-[52px]">权威纪录奖项</h2>
                 </div>
@@ -925,147 +931,136 @@
 
                     <!-- Right Column (70%) -->
                     <div class="w-full lg:w-[70%] fade-up-slide-left">
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 gap-y-4">
-                            <div class="text-center group flex flex-col justify-center items-center py-4">
-                                <div class="font-serif font-black text-[32px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2025</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">金牛奖<br>持有者</div>
-                            </div>
-                            <div class="text-center group flex flex-col justify-center items-center py-4">
-                                <div class="font-serif font-black text-[32px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2025</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">Malaysia Book<br>Of Record</div>
-                            </div>
-                            <div class="text-center group flex flex-col justify-center items-center py-4">
-                                <div class="font-serif font-black text-[32px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2024</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">马来西亚 健康与保<br>健品牌奖</div>
-                            </div>
-                            <div class="text-center group flex flex-col justify-center items-center py-4">
-                                <div class="font-serif font-black text-[32px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2026</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">东盟<br>纪录持有者</div>
+                        <div class="space-y-4">
+                            <!-- ROW 1: Labels (3 items) -->
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <div class="text-center group flex flex-col justify-center items-center py-4">
+                                    <div class="font-serif font-black text-[32px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2025</div>
+                                    <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">金牛奖<br>持有者</div>
+                                </div>
+                                <div class="text-center group flex flex-col justify-center items-center py-4">
+                                    <div class="font-serif font-black text-[32px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2025</div>
+                                    <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">Malaysia Book<br>Of Record</div>
+                                </div>
+                                <div class="text-center group flex flex-col justify-center items-center py-4">
+                                    <div class="font-serif font-black text-[32px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2024</div>
+                                    <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">马来西亚 健康与保<br>健品牌奖</div>
+                                </div>
                             </div>
 
-                            <!-- ROW 1: Certificates -->
-                            <!-- Card 2 -->
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
-                                <img src="image/2.png" alt="Certificate 2" class="w-full h-full object-cover">
-                            </div>
-                            <!-- Card 3 -->
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
-                                <img src="image/3.png" alt="Certificate 3" class="w-full h-full object-cover">
-                            </div>
-                            <!-- Card 4 -->
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
-                                <img src="image/4.png" alt="Certificate 4" class="w-full h-full object-cover">
-                            </div>
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
-                                <img src="image/record2026.png" alt="2026 东盟纪录持有者" class="w-full h-full object-cover">
+                            <!-- ROW 1: Certificates (3 items) -->
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
+                                    <img src="image/new award image/jinniu.png" alt="Certificate 2" class="w-full h-full object-cover">
+                                </div>
+                                <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
+                                    <img src="image/new award image/Malaysia book of records.png" alt="Certificate 3" class="w-full h-full object-cover">
+                                </div>
+                                <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
+                                    <img src="image/new award image/IMG_2805.png" alt="Certificate 4" class="w-full h-full object-cover">
+                                </div>
                             </div>
 
                             <!-- ROW 2: Labels -->
-                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
-                                <div class="font-serif font-black text-[32px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2025</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">亚洲百强诚<br>信品牌大奖</div>
-                            </div>
-                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
-                                <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2023-2025</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">亚洲百强喜<br>爱产品奖</div>
-                            </div>
-                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
-                                <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2022-2023</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">亚太超级<br>健康品牌</div>
-                            </div>
-                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
-                                <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2023-2024</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">消费者<br>选择奖</div>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:mt-4">
+                                <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                    <div class="font-serif font-black text-[32px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2025</div>
+                                    <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">亚洲百强诚<br>信品牌大奖</div>
+                                </div>
+                                <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                    <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2023-2025</div>
+                                    <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">亚洲百强喜<br>爱产品奖</div>
+                                </div>
+                                <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                    <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2022-2023</div>
+                                    <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">亚太超级<br>健康品牌</div>
+                                </div>
+                                <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                    <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2023-2024</div>
+                                    <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">消费者<br>选择奖</div>
+                                </div>
                             </div>
 
                             <!-- ROW 2: Certificates -->
-                            <!-- Card 5 -->
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
-                                <img src="image/5.png" alt="Certificate 5" class="w-full h-full object-cover">
-                            </div>
-                            <!-- Card 6 -->
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
-                                <img src="image/6.png" alt="Certificate 6" class="w-full h-full object-cover">
-                            </div>
-                            <!-- Card 7 -->
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
-                                <img src="image/7.png" alt="Certificate 7" class="w-full h-full object-cover">
-                            </div>
-                            <!-- Card 8 -->
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
-                                <img src="image/8.png" alt="Certificate 8" class="w-full h-full object-cover">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
+                                    <img src="image/new award image/Asia Top 100.png" alt="Certificate 5" class="w-full h-full object-cover">
+                                </div>
+                                <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
+                                    <img src="image/new award image/IMG_9395.png" alt="Certificate 6" class="w-full h-full object-cover">
+                                </div>
+                                <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
+                                    <img src="image/7.png" alt="Certificate 7" class="w-full h-full object-cover">
+                                </div>
+                                <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
+                                    <img src="image/8.png" alt="Certificate 8" class="w-full h-full object-cover">
+                                </div>
                             </div>
 
-                            <!-- ROW 3: Labels -->
-                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
-                                <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2026</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">南洋十<br>大杰出青年</div>
-                            </div>
-                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
-                                <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2026</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">光明企业杰出<br>电商勇士奖</div>
-                            </div>
-                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
-                                <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2025</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">百大最具影响力<br>青年企业家奖</div>
-                            </div>
-                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
-                                <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2026</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">马来西亚纪录大全<br>Le Aura 香水系列</div>
+                            <!-- ROW 3: Labels (3 items) -->
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:mt-4">
+                                <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                    <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2026</div>
+                                    <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">南洋十<br>大杰出青年</div>
+                                </div>
+                                <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                    <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2026</div>
+                                    <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">光明企业杰出<br>电商勇士奖</div>
+                                </div>
+                                <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                    <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2025</div>
+                                    <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">百大最具影响力<br>青年企业家奖</div>
+                                </div>
                             </div>
 
-                            <!-- ROW 3: Certificates -->
-                            <!-- Card 9 -->
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
-                                <img src="image/20261.png" alt="南洋十大杰出青年" class="w-full h-full object-cover">
-                            </div>
-                            <!-- Card 10 -->
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
-                                <img src="image/20262.png" alt="光明企业杰出电商勇士奖" class="w-full h-full object-cover">
-                            </div>
-                            <!-- Card 11 -->
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
-                                <img src="image/2025.png" alt="百大最具影响力青年企业家奖" class="w-full h-full object-cover">
-                            </div>
-                            <!-- Card 12 -->
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
-                                <img src="image/20263.png" alt="马来西亚纪录大全 Le Aura 香水系列" class="w-full h-full object-cover">
+                            <!-- ROW 3: Certificates (3 items) -->
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
+                                    <img src="image/new award image/WPS Photo.png" alt="南洋十大杰出青年" class="w-full h-full object-cover">
+                                </div>
+                                <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
+                                    <img src="image/new award image/WPS Photo 23.png" alt="光明企业杰出电商勇士奖" class="w-full h-full object-cover">
+                                </div>
+                                <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden mb-6 md:mb-0">
+                                    <img src="image/2025.png" alt="百大最具影响力青年企业家奖" class="w-full h-full object-cover">
+                                </div>
                             </div>
 
                             <!-- ROW 4: Labels -->
-                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
-                                <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2026</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">马来西亚<br>纪录大全</div>
-                            </div>
-                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
-                                <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2024</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">马来西亚纪录大<br>全神髓膏</div>
-                            </div>
-                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
-                                <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2024</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">亚洲<br>纪录认证</div>
-                            </div>
-                            <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
-                                <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2024</div>
-                                <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">东盟<br>纪录持有者</div>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:mt-4">
+                                <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                    <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2026</div>
+                                    <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">马来西亚<br>纪录大全</div>
+                                </div>
+                                <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                    <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2024</div>
+                                    <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">马来西亚纪录大<br>全神髓膏</div>
+                                </div>
+                                <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                    <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2026</div>
+                                    <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">亚洲<br>纪录认证</div>
+                                </div>
+                                <div class="text-center group flex flex-col justify-center items-center py-4 md:mt-4">
+                                    <div class="font-serif font-black text-[22px] text-primary transition-colors group-hover:text-[#ff2222] tabular-nums">2026</div>
+                                    <div class="text-[14px] text-[#333] font-bold leading-tight mt-3">东盟<br>纪录持有者</div>
+                                </div>
                             </div>
 
                             <!-- ROW 4: Certificates -->
-                            <!-- Card 13 -->
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden">
-                                <img src="image/20264.png" alt="马来西亚纪录大全" class="w-full h-full object-cover">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden">
+                                    <img src="image/20264.png" alt="马来西亚纪录大全" class="w-full h-full object-cover">
+                                </div>
+                                <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden">
+                                    <img src="image/2024.png" alt="马来西亚纪录大全神髓膏" class="w-full h-full object-cover">
+                                </div>
+                                <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden">
+                                    <img src="image/record20261.png" alt="2026 亚洲纪录认证" class="w-full h-full object-cover">
+                                </div>
+                                <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden">
+                                    <img src="image/record20242.png" alt="2026 东盟纪录持有者" class="w-full h-full object-cover">
+                                </div>
                             </div>
-                            <!-- Card 14 -->
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden">
-                                <img src="image/2024.png" alt="马来西亚纪录大全神髓膏" class="w-full h-full object-cover">
-                            </div>
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden">
-                                <img src="image/record20261.png" alt="2024 亚洲纪录认证" class="w-full h-full object-cover">
-                            </div>
-                            <div class="bg-white border border-[#eee] rounded aspect-[3/4] flex flex-col items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(210,0,0,0.15)] relative overflow-hidden">
-                                <img src="image/record20242.png" alt="2024 东盟纪录持有者" class="w-full h-full object-cover">
-                            </div>
-
                         </div>
                     </div>
                 </div>
@@ -1158,7 +1153,7 @@
                     <div class="mb-4 fade-up flex flex-col items-start">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-[30px] h-[1px] bg-[#d20000]"></div>
-                            <span class="text-[#d20000] font-medium tracking-[0.2em] text-[13px]">产品系列</span>
+                            <span class="text-[#d20000] font-medium tracking-[0.2em] text-[13px]">产品系列 Product Series</span>
                         </div>
                     </div>
 
@@ -1168,6 +1163,9 @@
                             <br>
                             科学守护健康
                         </div>
+                        <p class="text-[#d9d9d9] text-[13px] sm:text-[15px] md:text-[18px] mt-4 font-medium tracking-[0.04em]">
+                            Combining nature and science for better health and wellbeing
+                        </p>
                     </div>
 
                     <div class="fade-up text-left" style="transition-delay: 0.2s;">
@@ -1208,7 +1206,7 @@
                         <h2 class="font-serif text-[#1a1a1a]" style="font-weight: 900; font-size: clamp(40px, 5vw, 64px); line-height: 1; margin-bottom: 24px;">神髓膏</h2>
                         
                         <p style="font-size: 15px; color: #555; line-height: 1.9; margin-bottom: 32px; max-w: 600px;">
-                            J神髓膏 作为 HH 品牌旗舰产品<br>
+                            Joiment 作为 HH 品牌旗舰产品<br>
                             以传统中医理论为根基，融合现代科研技术研发
                         </p>
                         
@@ -1417,13 +1415,13 @@
                 
                 <!-- Filters -->
                 <div class="flex flex-wrap justify-center gap-3 mb-16">
-                    <button class="filter-btn active px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="all">全部产品</button>
-                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="joint">关节骨骼</button>
-                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="slim">塑形减脂</button>
-                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="sugar">血糖管理</button>
-                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="hair">发肤护理</button>
-                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="organ">脏器调理</button>
-                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="other">其他产品</button>
+                    <button class="filter-btn active px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="all">全部产品 All</button>
+                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="joint">关节骨骼 Joints &amp; Bones</button>
+                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="slim">塑形减脂 Body Shaping</button>
+                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="sugar">血糖管理 Blood Sugar</button>
+                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="hair">发肤护理 Hair &amp; Skin Care</button>
+                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="organ">脏器调理 Organ Health Support</button>
+                    <button class="filter-btn bg-white text-[#d20000] hover:bg-[#d20000] hover:text-white px-6 py-2 rounded-full text-sm font-bold border border-[#d20000] transition-colors shadow-sm" data-filter="other">其他产品 Others</button>
                 </div>
 
                 <!-- Grid -->
@@ -1863,6 +1861,9 @@
                         <span class="block text-white">凝聚爱心</span>
                         <span class="block text-gradient">回馈社会</span>
                     </h1>
+                    <p class="text-white/85 text-sm md:text-base tracking-[0.12em] uppercase whitespace-nowrap overflow-x-auto">
+                        United in compassion, giving back to society
+                    </p>
                 </div>
                 <div class="text-white fade-up w-full max-w-3xl flex justify-center" style="transition-delay: 0.2s;">
                     <div class="py-2 text-center">
